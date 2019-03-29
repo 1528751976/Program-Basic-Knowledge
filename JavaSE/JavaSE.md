@@ -1,5 +1,9 @@
 # JavaSE篇
 
+## 目录
+
+* [基础部分](### Q&S基础部分)
+
 ### Q&S基础部分
 
 **Q1.JDK 和 JRE 有什么区别？**
@@ -39,7 +43,7 @@ default：默认的，在同一个包中的类可以访问，同一个包中的�
 可以包含多个类，但是只有一个类可以使用public来修饰，并且文件名称必须与public修饰的类名称相同。
 
 **Q5.switch 语句能否作用在 byte 上，能否作用在 long 上，能否作用在 String 上?**
-
+ 
 switch表达式中，只能是int类型或者Integer或者枚举类型。byte、short、char可以隐式转换成int类型，因此可以使用这三种类型的表达式，那么long、String类型就不能应用。
 
 **Q6.short s1 = 1; s1 = s1 + 1;有什么错? short s1 = 1; s1 += 1;有什么错?**
