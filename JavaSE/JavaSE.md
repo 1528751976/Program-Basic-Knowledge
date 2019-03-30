@@ -14,7 +14,7 @@ _Java的基本类型有8种：_<br>
 整数型：byte、short、int、long（对应位数：8,16,32,64）<br>
 浮点型：float、double（对应位数：32,64）<br>
 字符型：char（对应位数：16）<br>
-布尔类型：boolean<br>
+布尔类型：boolean（单独使用的时候是会转换成int类型，如果是数组，则会转换成byte类型，因此对应两种位数，32和8位）<br>
 <br>
 _对应的封装类：_<br>
 整数型包装类：Byte，Short，Integer，Long<br>
@@ -205,7 +205,7 @@ Overload是重载的意思，Override是覆盖的意思，也就是重写。<br>
 
 子类方法的访问权限只能比父类的更大，不能更小。如果父类的方法是 private 类型，那么，子类则不存在覆盖的限制，相当于子类中增加了一个全新的方法。<br>
 
-如果几个 Overloaded 的方法的参数列表不一样，它们的返回者类型当然也可以不一样。如果两个方法的参数列表完全一样，是否可以让它们的返回值不同来实现重载 Overload?<br>
+==如果几个 Overloaded 的方法的参数列表不一样，它们的返回者类型当然也可以不一样。如果两个方法的参数列表完全一样，是否可以让它们的返回值不同来实现重载 Overload?==<br>
 
 这是不行的，我们可以用反证法来说明这个问题， 因为我们有时候调用一个方法时也可以不定义返回结果变量，即不要关心其返回结果，例如，我们调用 map.remove(key)方法时，虽然 remove 方法有返回值，但是我们通常都不会定义接收返回结果的变量，这时候假设该类中有两个名称和参数列表完全相同的方法，仅仅是返回类型不同,java 就无法确定编程者倒底是想调用哪个方法了，因为它无法通过返回结果类型来判断。 override 可以翻译为覆盖，从字面就可以知道，它是覆盖了一个方法并且对其重写，以求达到不同的作用。对我们来说最熟悉的覆盖就是对接口方法的实现，在接口中一般只是对方法 进行了声明，而我们在实现时，就需要实现接口声明的所有方法。除了这个典型的用法以外， 我们在继承中也可能会在子类覆盖父类中的方法。<br>
 
@@ -215,9 +215,10 @@ Overload是重载的意思，Override是覆盖的意思，也就是重写。<br>
 2、覆盖的方法的返回值必须和被覆盖的方法的返回一致；<br>
 3、覆盖的方法所抛出的异常必须和被覆盖方法的所抛出的异常一致，或者是其子类；<br>
 4、被覆盖的方法不能为 private，否则在其子类中只是新定义了一个方法，并没有对其进行覆盖。<br>
+5、父类方法中的static、final修饰的方法，不可覆盖。<br>
 
-overload 对我们来说可能比较熟悉，可以翻译为重载，它是指我们可以定义一些名称相同的方法，通过定义不同的输入参数来区分这些方法，然后再调用时，VM 就会根据不同的参数样式，来选择合适的方法执行。在使用重载要注意以下的几点：<br>
-
+overload 对我们来说可能比较熟悉，可以翻译为重载，它是指我们可以定义一些名称相同的方法，通过定义不同的输入参数来区分这些方法，然后再调用时，VM 就会根据不同的参数样式，来选择合适的方法执行。<br>
+在使用重载要注意以下的几点：<br>
 1、在使用重载时只能通过不同的参数样式。例如，不同的参数类型，不同的参数个数，不同的参数顺序（当然，同一方法内的几个参数类型必须不一样，例如可以是 fun(int,float)， 但是不能为 fun(int,int)）； <br>
 2、不能通过访问权限、返回类型、抛出的异常进行重载；<br>
 3、方法的异常类型和数目不会对重载造成影响；<br>
@@ -330,14 +331,399 @@ float []f[] = new float[6][6];
 float [][]f = new float[6][6];
 float [][]f = new float[6][];
 ```
+**Q29.String str = new String(“abc”)在内存中如何分配？**
+
+“abc”保存在常量池中，str作为对象被保存在堆中，然而Java7后，将常量池放在了堆里。<br>
+
+**Q30.下列程序中有什么错误？**
+
+```java
+父类{方法1}
+
+子类extends父类{重写方法1，方法2}
+
+父类 对象 = new 子类();
+```
+
+此代码不能通过编译，编译器认为对象是父类类型，父类中没有子类中的方法2，对象只能调用父类中的方法1。
+
+**Q31.JDBC中获取结果集的操作有哪些？**
+
+```java
+1.Statement sta = con.createStatment();
+  ResultSet rs = sta.executeQuery("SQL语句");
+
+2.PreparedStatement pst = con.prepareStatement("SQL语句");
+  ResultSet rs = pst.executeQuery();
+```
+
+**Q32.Java中的IO流分几种？**
+
+按流向分（站在程序角度考虑）
+
+    输入流(input)
+
+    输出流(output)
+
+按类型分:
+
+    字节流(InputStream/OutputStream)
+
+        任何文件都可以通过字节流进行传输。
+
+    字符流(Reader/Writer)
+
+        非纯文本文件，不能用字符流，会导致文件格式破坏，不能正常执行。
+
+按功能分:
+
+    节点流(低级流:直接跟输入输出源对接)
+
+        FileInputStream/FileOutputStream/FileReader/FileWriter/PrintStream/PrintWriter.
+
+    处理流(高级流:建立在低级流的基础上)
+
+        转换流：InputStreamReader/OutputStreamWriter，字节流转字符流/字符流转字节流
+
+        缓冲流：BufferedInputStream/BufferedOutputStream   BufferedReader/BufferedReader可对节点流经行包装，使读写更快
+
+**Q33.BIO\\NIO\\AIO中的区别？**
+
+- Java BIO ： 同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。
+
+- Java NIO ： 同步非阻塞，服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理。
+
+- Java AIO(NIO.2) ： 异步非阻塞，服务器实现模式为一个有效请求一个线程，客户端的I/O请求都是由OS先完成了再通知服务器应用去启动线程进行处理。
+
+_BIO、NIO、AIO适用场景分析:_
+
+- BIO方式适用于连接数目比较小且固定的架构，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解。
+
+- NIO方式适用于连接数目多且连接比较短（轻操作）的架构，比如聊天服务器，并发局限于应用中，编程比较复杂，JDK1.4开始支持。
+
+- AIO方式使用于连接数目多且连接比较长（重操作）的架构，比如相册服务器，充分调用OS参与并发操作，编程比较复杂，JDK7开始支持。
+
+**Q34.Files的常用方法？**
+
+（一）访问文件名或路径
+
+1）String getName()  返回File对象所表示的文件名或文件路径
+
+2）String getPath()    返回File对象所对应的相对路径名。
+
+3）File getAbsoluteFile() 返回File对象的绝对路径文件
+
+4）String getAbsolutePath() 返回File对象所对应的绝对路径名
+
+5）String getParent（） 返回File对象所对应目录的父目录
+
+6. boolean renameTo(File dest) 重命名File对象的文件或目录
+
+（二）文件检测
+
+1boolean exists()   判断File对象的文件或目录是否存在
+
+2)bool canWrite()     判断File对象是否可写
+
+3)boolean canRead()判断File对象是否可读
+
+4)boolean isDirectory() 判断File对象是否是目录
+
+5)boolean isFile() 判断File对象是否是文件
+
+6)boolean  isAbsolute() 判断File对象是否采用绝对路径
+
+(三）文件信息
+
+1)long length() ; File对象对应文件的长度
+
+2)long lastNodified()   File对象最后修改的时间
+
+(四）文件操作
+
+1）boolean createNewFile() ;      检查文件是否存在，当文件不存在时创建一个新的文件
+
+2. boolean delete()             删除File对象所对应的文件或目录 
+
+(五）目录操作
+
+1)boolean mkdir()       创建一个File对象所对应的路径
+
+2)String\[] list()         列出File对象所有的子文件名和路径名
+
+3)File\[] listFile()     列出File对象的所有子文件或路径
+
+4)static File\[] listRoots()   列出系统所有的根路径
 
 ### Q&S集合部分
 
+**Q1.Java中的容器有哪些？**
+
+数组、String（底层是char类型数组）、List（线性表）、Set（无序存储，元素不能重复）、Map（无序存储，元素可以重复）
+
+**Q2.Collection 和 Collections 有什么区别？**
+
+1、java.util.Collection 是一个**集合接口（集合类的一个顶级接口）**。它提供了对集合对象进行基本操作的通用接口方法。Collection接口在Java 类库中有很多具体的实现。Collection接口的意义是为各种具体的集合提供了最大化的统一操作方式，其直接继承接口有List与Set。
+
+ Collection\
+├List\
+│├LinkedList\
+│├ArrayList\
+│└Vector\
+│　└Stack\
+└Set
+
+2、Collections则是集合类的一个工具类/帮助类，其中提供了一系列静态方法，用于对集合中元素进行排序、搜索以及线程安全等各种操作。
+
+1. 排序(Sort)
+   使用sort方法可以根据元素的自然顺序 对指定列表按升序进行排序。列表中的所有元素都必须实现 Comparable 接口。此列表内的所有元素都必须是使用指定比较器可相互比较的
+2. 混排（Shuffling）
+   混排算法所做的正好与 sort 相反: 它打乱在一个 List 中可能有的任何排列的踪迹。也就是说，基于随机源的输入重排该 List, 这样的排列具有相同的可能性（假设随机源是公正的）。这个算法在实现一个碰运气的游戏中是非常有用的。Collections.Shuffling(list)
+3. 反转(Reverse)
+   使用Reverse方法可以根据元素的自然顺序 对指定列表按降序进行排序。Collections.reverse(list)
+4. 替换所以的元素(Fill)
+   使用指定元素替换指定列表中的所有元素。Collections.fill(li,"aaa");
+5. 拷贝(Copy)
+   用两个参数，一个目标 List 和一个源 List, 将源的元素拷贝到目标，并覆盖它的内容。目标 List 至少与源一样长。如果它更长，则在目标 List 中的剩余元素不受影响。Collections.copy(list,li): 前面一个参数是目标列表 ,后一个是源列表。
+6. 返回Collections中最小元素(min)
+   根据指定比较器产生的顺序，返回给定 collection 的最小元素。collection 中的所有元素都必须是通过指定比较器可相互比较的。
+   Collections.min(list)
+7. 返回Collections中最小元素(max)
+   根据指定比较器产生的顺序，返回给定 collection 的最大元素。collection 中的所有元素都必须是通过指定比较器可相互比较的。
+   Collections.max(list)
+8. lastIndexOfSubList
+   返回指定源列表中最后一次出现指定目标列表的起始位置
+   int count = Collections.lastIndexOfSubList(list,li);
+9. IndexOfSubList
+   返回指定源列表中第一次出现指定目标列表的起始位置
+   int count = Collections.indexOfSubList(list,li);
+10. Rotate
+    根据指定的距离循环移动指定列表中的元素
+    Collections.rotate(list,-1);如果是负数，则正向移动，正数则方向移动。
+
+**Q3.List、Set、Map 有什么区别？**
+_**List：**_
+
+- 可以允许重复的对象。
+- 可以插入多个null元素。
+- 是一个有序容器，保持了每个元素的插入顺序，输出的顺序就是插入的顺序。
+- 常用的实现类有 ArrayList、LinkedList 和 Vector。ArrayList 最为流行，它提供了使用索引的随意访问，而 LinkedList 则对于经常需要从 List 中添加或删除元素的场合更为合适。
+
+_**Set：**_
+
+- 不允许重复对象
+- 无序容器，你无法保证每个元素的存储顺序，TreeSet通过 Comparator  或者 Comparable 维护了一个排序顺序。
+- 只允许一个 null 元素
+- Set 接口最流行的几个实现类是 HashSet、LinkedHashSet 以及 TreeSet。最流行的是基于 HashMap 实现的 HashSet；TreeSet 还实现了 SortedSet 接口，因此 TreeSet 是一个根据其 compare() 和 compareTo() 的定义进行排序的有序容器。
+
+_**Map:**_
+
+- Map不是collection的子接口或者实现类。Map是一个接口。
+- Map 的 每个 Entry 都持有两个对象，也就是一个键一个值，Map 可能会持有相同的值对象但键对象必须是唯一的。
+- TreeMap 也通过 Comparator  或者 Comparable 维护了一个排序顺序。
+- Map 里你可以拥有随意个 null 值但最多只能有一个 null 键。
+- Map 接口最流行的几个实现类是 HashMap、LinkedHashMap、Hashtable 和 TreeMap。（HashMap、TreeMap最常用）
+
+**Q4.什么场景下使用list、set、map？**
+
+1. 如果你经常会使用索引来对容器中的元素进行访问，那么 List 是你的正确的选择。如果你已经知道索引了的话，那么 List 的实现类比如 ArrayList 可以提供更快速的访问,如果经常添加删除元素的，那么肯定要选择LinkedList。
+
+2. 如果你想容器中的元素能够按照它们插入的次序进行有序存储，那么还是 List，因为 List 是一个有序容器，它按照插入顺序进行存储。
+
+3. 如果你想保证插入元素的唯一性，也就是你不想有重复值的出现，那么可以选择一个 Set 的实现类，比如 HashSet、LinkedHashSet 或者 TreeSet。所有 Set 的实现类都遵循了统一约束比如唯一性，而且还提供了额外的特性比如 TreeSet 还是一个 SortedSet，所有存储于 TreeSet 中的元素可以使用 Java 里的 Comparator 或者 Comparable 进行排序。LinkedHashSet 也按照元素的插入顺序对它们进行存储。
+
+4. 如果你以键和值的形式进行数据存储那么 Map 是你正确的选择。你可以根据你的后续需要从 Hashtable、HashMap、TreeMap 中进行选择。
+
+**Q5.HashMap 和 Hashtable 有什么区别？**
+
+共同点：都完成了Map接口的实现
+区别：
+* HashMap允许空键值，异步处理，非线程安全，只有一个线程的情况下效率高于HashTable。HashTable同步，线程安全。
+* HashMap将HashTable中的contains方法更改为containsvalue和containskey。
+* HashMap是Map接口的一个实现，HashTable基于陈旧的Dictionary抽象类。
+
+**Q6.HashMap 和 Hashtable的实现原理，主要讲讲HashMap的原理？（HashMap的1.7和1.8的区别）**
+
+共同点：实现原理基本相同，都是使用哈希表的“拉链法”，基于数组（Entry类型）和链表实现。两者构造方法的意思是相同的。
+
+```java
+HashMap(){}
+默认容量为16，装填因子为0.75。HashTable默认容量为11。
+HashMap(int initialCapacity){}
+指定初始容量，装填因子默认为0.75
+HashMap(int initialCapacity，float loadFactor){}
+指定容量和装填因子
+HashMap(Map<?extends K,? extends V> m)
+构造新的HashMap
+```
+
+考察HashMap的原理，就是考察put和get原理。
+put原理根据key值获取相应的hash值：
+
+```java
+int hash = hash(key.has.hascode())
+```
+其实就是使用哈希表原理中的除留余数法来确定key值应该在数组中的位置，数组的作用是充当索引，key值相同映射到数组中的同一位置，使用头插法放在表头。
+
+get原理利用hash值先进行数组中定位，再遍历链表使用equals()方法匹配。
+
+当HashMap达到默认因子0.75，会自动双倍扩容，扩容后重新计算每个key值的hash值。数组长度必须为16或者2的幂次，这样做的目的是使位运算的结果能够均匀分布。
+
+HashMap没有加锁，因此造成了非线程安全，若HashMap接近临界点，且有两个或多个线程并发put操作，会进行扩容与hash值重新结算，而rehash在并发情况下会形成链表环。
+
+链表环的判断：两个指针A和B，同时指向头结点，然后开始循环遍历，让A每次下移一个节点，让B每次下移两个节点，然后比较两个指针指的节点是否相同，相同则有环。
+
+JDK8中HashMap引入了红黑树（自平衡二叉树），提升了查询，插入和删除
+
+**Q6.ConcurrentHashMap的原理？（的1.7和1.8的区别）**
+
+concurrenthashmap既可以保证安全，又能保证性能。其原理就是一个二级哈希表，一个总的哈希表下面有若干子哈希表，由segement数组组成，使用分段锁，并行插入时效率高。
+
+concurrenthashmap的put原理：
+* 先为key值做hash运算，通过hash值定位到segement对象
+* 获取可重入锁，对分段进行加锁
+* 再次计算hash值，定位到segemen里的具体位置
+* 插入或者覆盖HashEntry对象
+* 释放锁
+
+get原理：
+* 为输入的key做hash运算，得到hash值
+* 通过hash值，定位到对应的segement对象
+* 再次通过hash值，定位到segement当中数组的具体位置
+
+JDK8中，concurrenthashmap放弃了segement分段机制，利用Node数组+CAS+Synchronized来保证并发更新安全，底层为数组+链表+红黑树。
+
+**Q7.说一下 HashSet 的实现原理？**
+
+实现了Set接口，但底层由HashMap支持，不包含重复元素，且维持自己的内部排序，可使用null。
+
+```java
+iterator()返回set元素
+public Iterator<E> iterator(){return map.keyset().iterator();}
+
+size()返回大小
+public int size(){return map.size();}
+
+isEmpty()判空
+return map.isEmpty();
+
+contains(Object o)判断是否存在某元素
+return map.containskey(o);
+
+add()添加元素
+return map.put(e,PRESENT)==null;
+
+remove()删除元素
+return map.remove(o)==PRESENT;
+
+clear()清除所有元素
+map.clear();
+
+clone获取HashMap的浅表副本，并没有复制这些元素本身
+try{
+  HashSet<E> newSet = (HashSet<E>) super.clone();
+  newSet.map = (HashSet<E,Object>) map.clone();
+  return newSet;
+}caatch(CloneNotSupportedException e){
+  throw new InternalError();
+}
+
+```
+
+**Q8.ArrayList 和 LinkedList 的区别是什么？**
+
+**Q9.如何实现数组和 List 之间的转换？**
+
+**Q10.ArrayList 和 Vector 的区别是什么？**
+
+**Q11.Array 和 ArrayList 有何区别？**
+
+**Q12.在 Queue 中 poll()和 remove()有什么区别？**
+
+**Q13.哪些集合类是线程安全的？**
+
+**Q14.迭代器 Iterator 是什么？**
+
+**Q15.Iterator 怎么使用？有什么特点？**
+
+**Q16.Iterator 和 ListIterator 有什么区别？**
+
+**Q17.怎么确保一个集合不能被修改？**
+
+
 ### Q&S线程部分
+
+**Q1.并行和并发有什么区别？**
+
+**Q2.线程和进程的区别？**
+
+**Q3.守护线程是什么？**
+
+**Q4.创建线程有哪几种方式？**
+
+**Q5.说一下 runnable 和 callable 有什么区别？**
+
+**Q6.线程有哪些状态？**
+
+**Q7.sleep() 和 wait() 有什么区别？**
+
+**Q8.notify()和 notifyAll()有什么区别？**
+
+**Q9.线程的 run()和 start()有什么区别？**
+
+**Q10.创建线程池有哪几种方式？**
+
+**Q11.线程池都有哪些状态？**
+
+**Q12.线程池中 submit()和 execute()方法有什么区别？**
+
+**Q13.在 java 程序中怎么保证多线程的运行安全？**
+
+**Q14.多线程锁的升级原理是什么？**
+
+**Q15.什么是死锁？**
+
+**Q16.怎么防止死锁？**
+
+**Q17.ThreadLocal 是什么？有哪些使用场景？**
+
+**Q18.说一下 synchronized 底层实现原理？**
+
+**Q19.synchronized 和 volatile 的区别是什么？**
+
+**Q20.synchronized 和 Lock 有什么区别？**
+
+**Q21.synchronized 和 ReentrantLock 区别是什么？**
+
+**Q22.说一下 atomic 的原理？**
 
 ### Q&S反射部分
 
+**Q1.什么是反射？**
+
+**Q2.什么是 java 序列化？什么情况下需要序列化？**
+
+**Q3.动态代理是什么？有哪些应用？**
+
+**Q4.怎么实现动态代理？**
+
 ### Q&S异常部分
+
+**Q1.throw 和 throws 的区别？**
+
+**Q2.final、finally、finalize 有什么区别？**
+
+**Q3.try-catch-finally 中哪个部分可以省略？**
+
+**Q4.try-catch-finally 中，如果 catch 中 return 了，finally 还会执行吗？**
+
 
 ### Q&S对象拷贝部分
 
+**Q1.为什么要使用克隆？**
+
+**Q2.如何实现对象克隆？**
+
+**Q3.深拷贝和浅拷贝区别是什么？**
+
+### Q&SJava常考排序
