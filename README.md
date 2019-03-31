@@ -7,14 +7,14 @@
 # Java
 * [x] [JavaSE篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JavaSE/JavaSE.md)
 * [x] [JavaEE篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JavaEE/JavaEE.md)
-* [x] [JVM篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JVM/JVM.md)
+* [ ] [JVM篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JVM/JVM.md)
 * [x] [Java数据结构篇](https://github.com/Zhang-Yixuan/JavaDataStruct/blob/master/README.md)
-* [x] [Java设计模式](https://github.com/Zhang-Yixuan/Design_patterns/blob/master/README.md)
+* [ ] [Java设计模式](https://github.com/Zhang-Yixuan/Design_patterns/blob/master/README.md)
 * [x] [LeetCode练习篇](https://github.com/Zhang-Yixuan/LeetCodeTest)
 * [x] [OfferCode](https://github.com/Zhang-Yixuan/OfferCode)
 
 # 数据库
-* [x] [MySQL篇与Redis](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/DB/DB.md)
+* [ ] [MySQL篇与Redis](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/DB/DB.md)
 
 # 前端
 * [ ] [Html+CSS+JS](https://)
