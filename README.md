@@ -6,7 +6,7 @@
 * [ ] [JVM篇](https://)
 * [ ] [MySQL](https://)
 * [ ] [Redis篇](https://)
-* [ ] [Java数据结构篇](https://github.com/Zhang-Yixuan/JavaDataStruct)
+* [x] [Java数据结构篇](https://github.com/Zhang-Yixuan/JavaDataStruct)
 * [x] [LeetCode练习篇](https://github.com/Zhang-Yixuan/LeetCodeTest)
 * [x] [OfferCode篇](https://github.com/Zhang-Yixuan/OfferCode)
 
