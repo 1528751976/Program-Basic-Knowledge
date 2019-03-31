@@ -9,6 +9,7 @@
 * [x] [JavaEE篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JavaEE/JavaEE.md)
 * [x] [JVM篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JVM/JVM.md)
 * [x] [Java数据结构篇](https://github.com/Zhang-Yixuan/JavaDataStruct/blob/master/README.md)
+* [x] [Java设计模式](https://github.com/Zhang-Yixuan/Design_patterns/blob/master/README.md)
 * [x] [LeetCode练习篇](https://github.com/Zhang-Yixuan/LeetCodeTest)
 * [x] [OfferCode](https://github.com/Zhang-Yixuan/OfferCode)
 
