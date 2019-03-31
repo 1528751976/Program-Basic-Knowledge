@@ -1,17 +1,32 @@
-# Java基础知识的复习总结
+# 编程语言基础与面试知识总结
 
-本文档主要用来总结平日里Java学习常见的坑和面试主要考察的问题。主要涉及到JavaSE、JavaEE、JVM、MySQL、Redis五个部分。其中每个部分的问题都来自网上，答案是由本人整理的，难免有漏掉和有错误的地方，如果你有看到文档中存在任何问题，请指正，谢谢！
-* [x] [JavaSE篇](https://)
-* [ ] [JavaSE篇](https://)
-* [ ] [JVM篇](https://)
-* [ ] [MySQL](https://)
-* [ ] [Redis篇](https://)
-* [ ] [数据结构篇](https://)
-* [ ] [LeetCode练习篇](https://)
-* [ ] [OfferCode](https://)
+==感谢各位贡献者！==
 
-在平日里，我估计很少有人去在意这些基础问题，工作的人平时都忙着做一些开发，学生们却急于做项目，打比赛，很少能够静下心来仔仔细细的将这些基础问题掌握好。只有当求职的时候，才慌慌张张的去找笔试题来做，一做题才发现自己漏洞百出。写这个文档的目的，一方面想让自己发现自己的不足，另一方面希望有更多的人能够读到这份文档，平日里没事就可以看看。
+本项目主要涉及到Java语言、Hadoop五个部分。其中每个部分的问题都来自网上，答案是由本人整理的，难免有漏掉和有错误的地方，如果你有看到文档中存在任何问题，请指正，谢谢！
 
+# Java
+* [x] [JavaSE篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JavaSE/JavaSE.md)
+* [x] [JavaEE篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JavaEE/JavaEE.md)
+* [x] [JVM篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JVM/JVM.md)
+* [x] [Java数据结构篇](https://github.com/Zhang-Yixuan/JavaDataStruct/blob/master/README.md)
+* [x] [LeetCode练习篇](https://github.com/Zhang-Yixuan/LeetCodeTest)
+* [x] [OfferCode](https://github.com/Zhang-Yixuan/OfferCode)
+
+# 数据库
+* [x] [MySQL篇与Redis](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/DB/DB.md)
+
+# 前端
+* [ ] [Html+CSS+JS](https://)
+* [ ] [Vue.js](https://)
+
+# Hadoop
+* [ ] [Hadoop](https://)
+
+# Scala
+* [ ] [Scala](https://)
+* [ ] [Spark](https://)
+
+# Python
 
 
 
