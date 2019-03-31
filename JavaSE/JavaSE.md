@@ -1,7 +1,5 @@
 # JavaSE篇
 
-@toc
-
 ### Q&S基础部分
 
 **Q1.JDK 和 JRE 有什么区别？**
@@ -12,20 +10,20 @@ JRE 是 Java程序运行所需的内容的集合，它包含了 Java虚拟机（
 
 **Q2.Java的基本类型有哪些？它们各自相对应的封装类又是什么？请说明int和它的封装类之间的区别。**
 
-_Java的基本类型有8种：_
-整数型：byte、short、int、long（对应位数：8,16,32,64）
-浮点型：float、double（对应位数：32,64）
-字符型：char（对应位数：16）
-布尔类型：boolean（单独使用的时候是会转换成int类型，如果是数组，则会转换成byte类型，因此对应两种位数，32和8位）
+_Java的基本类型有8种：_<br>
+整数型：byte、short、int、long（对应位数：8,16,32,64）<br>
+浮点型：float、double（对应位数：32,64）<br>
+字符型：char（对应位数：16）<br>
+布尔类型：boolean（单独使用的时候是会转换成int类型，如果是数组，则会转换成byte类型，因此对应两种位数，32和8位）<br>
 
-_对应的封装类：_
-整数型包装类：Byte，Short，Integer，Long
-浮点型包装类：Float，Double
-字符型包装类：Character
-布尔类型包装类：Boolean
+_对应的封装类：_<br>
+整数型包装类：Byte，Short，Integer，Long<br>
+浮点型包装类：Float，Double<br>
+字符型包装类：Character<br>
+布尔类型包装类：Boolean<br>
 
-_Integer与int的区别：_
-int 的默认值为0，而 Integer 的默认值为 null，即 Integer 可以区分出未赋值和值为0的区别，int 则无法表达出未赋值的情况。例如，要想表达出没有参加考试和考试成绩为0的区别，则只能使用 Integer。
+_Integer与int的区别：_<br>
+int 的默认值为0，而 Integer 的默认值为 null，即 Integer 可以区分出未赋值和值为0的区别，int 则无法表达出未赋值的情况。例如，要想表达出没有参加考试和考试成绩为0的区别，则只能使用 Integer。<br>
 
 **Q3.请说出作用域 public，private，protected，以及default的区别**
 
