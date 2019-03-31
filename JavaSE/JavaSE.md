@@ -1051,6 +1051,7 @@ catch和finally不能同时省略。
 
 **Q4.常见的异常类有哪些？**
 ![异常类](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/resource/%E5%BC%82%E5%B8%B8%E7%B1%BB.jpg)
+<br>
 **Q5.运行时异常与一般异常有何异同？**
 
 一般异常表示程序运行过程中可能出现的非正常状态，运行时异常表示虚拟机的通常操作中可能遇到的异常，是一种常见运行错误。<br>
