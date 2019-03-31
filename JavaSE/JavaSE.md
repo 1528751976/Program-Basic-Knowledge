@@ -1,45 +1,47 @@
 # JavaSE篇
 
+@toc
+
 ### Q&S基础部分
 
 **Q1.JDK 和 JRE 有什么区别？**
 
-JDK是功能齐全的Java软件开发包。JRE 是 Java运行时环境。<br>
-JDK拥有JRE所拥有的一切，还有编译器（javac）和工具（如javadoc和jdb），它能够创建和编译程序。<br>
-JRE 是 Java程序运行所需的内容的集合，它包含了 Java虚拟机（JVM），Java类库，java命令和其他的一些基础构件。但是，它不能用于创建新程序，只运行程序。<br>
+JDK是功能齐全的Java软件开发包。JRE 是 Java运行时环境。
+JDK拥有JRE所拥有的一切，还有编译器（javac）和工具（如javadoc和jdb），它能够创建和编译程序。
+JRE 是 Java程序运行所需的内容的集合，它包含了 Java虚拟机（JVM），Java类库，java命令和其他的一些基础构件。但是，它不能用于创建新程序，只运行程序。
 
 **Q2.Java的基本类型有哪些？它们各自相对应的封装类又是什么？请说明int和它的封装类之间的区别。**
 
-_Java的基本类型有8种：_<br>
-整数型：byte、short、int、long（对应位数：8,16,32,64）<br>
-浮点型：float、double（对应位数：32,64）<br>
-字符型：char（对应位数：16）<br>
-布尔类型：boolean（单独使用的时候是会转换成int类型，如果是数组，则会转换成byte类型，因此对应两种位数，32和8位）<br>
-<br>
-_对应的封装类：_<br>
-整数型包装类：Byte，Short，Integer，Long<br>
-浮点型包装类：Float，Double<br>
-字符型包装类：Character<br>
-布尔类型包装类：Boolean<br>
-<br>
-_Integer与int的区别：_<br>
-int 的默认值为0，而 Integer 的默认值为 null，即 Integer 可以区分出未赋值和值为0的区别，int 则无法表达出未赋值的情况。例如，要想表达出没有参加考试和考试成绩为0的区别，则只能使用 Integer。<br>
+_Java的基本类型有8种：_
+整数型：byte、short、int、long（对应位数：8,16,32,64）
+浮点型：float、double（对应位数：32,64）
+字符型：char（对应位数：16）
+布尔类型：boolean（单独使用的时候是会转换成int类型，如果是数组，则会转换成byte类型，因此对应两种位数，32和8位）
+
+_对应的封装类：_
+整数型包装类：Byte，Short，Integer，Long
+浮点型包装类：Float，Double
+字符型包装类：Character
+布尔类型包装类：Boolean
+
+_Integer与int的区别：_
+int 的默认值为0，而 Integer 的默认值为 null，即 Integer 可以区分出未赋值和值为0的区别，int 则无法表达出未赋值的情况。例如，要想表达出没有参加考试和考试成绩为0的区别，则只能使用 Integer。
 
 **Q3.请说出作用域 public，private，protected，以及default的区别**
 
-流传的面试题中default经常被写成friendly，这两者没有区别，但是Java中没有friendly关键字。<br>
-public：共有的，表明该数据对所有人开放，可以直接调<br>
-private：私有的，可以理解为自己的私有财产，仅自己可以使用。<br>
-protected：受保护的，可以理解为有一群人组成一个社团，这个社团里的人可以使用，后代也可以使用。这个社团就相当于一个包，在同一个包中的类便可以访问，子类也可以访问。<br>
-default：默认的，在同一个包中的类可以访问，同一个包中的子类也可以访问，但是当子类在其他包中，就不能访问。<br>
-![Java权限访问符](https://github.com/Zhang-Yixuan/Java-Basic-Knowledge/blob/master/resource/Java%E6%9D%83%E9%99%90%E8%AE%BF%E9%97%AE%E7%AC%A6.png)
+流传的面试题中default经常被写成friendly，这两者没有区别，但是Java中没有friendly关键字。
+public：共有的，表明该数据对所有人开放，可以直接调
+private：私有的，可以理解为自己的私有财产，仅自己可以使用。
+protected：受保护的，可以理解为有一群人组成一个社团，这个社团里的人可以使用，后代也可以使用。这个社团就相当于一个包，在同一个包中的类便可以访问，子类也可以访问。
+default：默认的，在同一个包中的类可以访问，同一个包中的子类也可以访问，但是当子类在其他包中，就不能访问。
+![Java权限访问符]($resource/Java%E6%9D%83%E9%99%90%E8%AE%BF%E9%97%AE%E7%AC%A6.png)
 
 **Q4.一个".java"源文件中是否可以包括多个类（不是内部类）？有什么限制？**
 
 可以包含多个类，但是只有一个类可以使用public来修饰，并且文件名称必须与public修饰的类名称相同。
 
 **Q5.switch 语句能否作用在 byte 上，能否作用在 long 上，能否作用在 String 上?**
- 
+
 switch表达式中，只能是int类型或者Integer或者枚举类型。byte、short、char可以隐式转换成int类型，因此可以使用这三种类型的表达式，那么long、String类型就不能应用。
 
 **Q6.short s1 = 1; s1 = s1 + 1;有什么错? short s1 = 1; s1 += 1;有什么错?**
@@ -48,109 +50,109 @@ switch表达式中，只能是int类型或者Integer或者枚举类型。byte、
 
 **Q7.用最有效率的方法算出 2 乘以 8 等于几?用最有效的方法算出奇数和偶数 ？**
 
-2\*8=16，我们可以得到2的二进制位10，而16的二进制数为10000，发现2的二进制数中的1向左移动三位就可以得到16的二进制数。因此我们可以使用位移运算来快速计算2\<\<3。<br>
-奇数的二进制数最后一位总是1，而偶数的二进制数总是0，因此我们可以使用与运算来进行奇偶数的识别。例如这个数为n，if((n&1)= =1)时，此数就是奇数；if((n&1)= =0)时，此数为偶数。<br>
+2\*8=16，我们可以得到2的二进制位10，而16的二进制数为10000，发现2的二进制数中的1向左移动三位就可以得到16的二进制数。因此我们可以使用位移运算来快速计算2\<\<3。
+奇数的二进制数最后一位总是1，而偶数的二进制数总是0，因此我们可以使用与运算来进行奇偶数的识别。例如这个数为n，if((n&1)= =1)时，此数就是奇数；if((n&1)= =0)时，此数为偶数。
 
 **Q8.什么是引用类型？**
 
-在Java中类型可分为两大类：值类型与引用类型。值类型就是基本数据类型（如int ,double 等），而引用类型，是指除了基本的变量类型之外的所有类型（如通过 class 定义的类型）。常用引用类型为数组，接口，类（尤其String类，最常见，最长考）。所有的类型在内存中都会分配一定的存储空间(形参在使用的时候也会分配存储空间,方法调用完成之后,这块存储空间自动消失)，基本的变量类型只有一块存储空间(分配在stack中), 而引用类型有两块存储空间(一块在stack中,一块在heap中)。<br>
-![引用类型](https://github.com/Zhang-Yixuan/Java-Basic-Knowledge/blob/master/resource/%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.png)<br>
-1） 引用是一种数据类型（保存在stack中），保存对象在内存（heap，堆空间）中的地址，这种类型即不是我们平时所说的简单数据类型也不是类实例(对象)；<br>
-2） 不同的引用可能指向同一个对象，换句话说，一个对象可以有多个引用，即该类类型的变量。<br>
-引用其实就像是一个对象的名字或者别名 (alias)，一个对象在内存中会请求一块空间来保存数据，根据对象的大小，它可能需要占用的空间大小也不等。访问对象的时候，我们不会直接是访问对象在内存中的数据，而是通过引用去访问。引用也是一种数据类型，我们可以把它想象为类似 C++ 语言中指针的东西，它指示了对象在内存中的地址——只不过我们不能够观察到这个地址究竟是什么。<br>
-如果我们定义了不止一个引用指向同一个对象，那么这些引用是不相同的，因为引用也是一种数据类型，需要一定的内存空间（stack，栈空间）来保存。但是它们的值是相同的，都指示同一个对象在内存（heap，堆空间）的中位置。<br>
+在Java中类型可分为两大类：值类型与引用类型。值类型就是基本数据类型（如int ,double 等），而引用类型，是指除了基本的变量类型之外的所有类型（如通过 class 定义的类型）。常用引用类型为数组，接口，类（尤其String类，最常见，最长考）。所有的类型在内存中都会分配一定的存储空间(形参在使用的时候也会分配存储空间,方法调用完成之后,这块存储空间自动消失)，基本的变量类型只有一块存储空间(分配在stack中), 而引用类型有两块存储空间(一块在stack中,一块在heap中)。
+![引用类型]($resource/%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.png)
+1） 引用是一种数据类型（保存在stack中），保存对象在内存（heap，堆空间）中的地址，这种类型即不是我们平时所说的简单数据类型也不是类实例(对象)；
+2） 不同的引用可能指向同一个对象，换句话说，一个对象可以有多个引用，即该类类型的变量。
+引用其实就像是一个对象的名字或者别名 (alias)，一个对象在内存中会请求一块空间来保存数据，根据对象的大小，它可能需要占用的空间大小也不等。访问对象的时候，我们不会直接是访问对象在内存中的数据，而是通过引用去访问。引用也是一种数据类型，我们可以把它想象为类似 C++ 语言中指针的东西，它指示了对象在内存中的地址——只不过我们不能够观察到这个地址究竟是什么。
+如果我们定义了不止一个引用指向同一个对象，那么这些引用是不相同的，因为引用也是一种数据类型，需要一定的内存空间（stack，栈空间）来保存。但是它们的值是相同的，都指示同一个对象在内存（heap，堆空间）的中位置。
 
 **Q9.== 和 equals 的区别是什么？**
 
-对于基本类型和引用类型 == 的作用效果是不同的，基本类型：比较的是值是否相同；引用类型：比较的是引用是否相同；<br>
-equals <br>
+对于基本类型和引用类型 == 的作用效果是不同的，基本类型：比较的是值是否相同；引用类型：比较的是引用是否相同；
+equals 
 equals 本质上就是 ==，只不过 String 和 Integer 等重写了 equals 方法，把它变成了值比较。String 重写了 Object 的 equals 方法，把引用比较改成了值比较。
 
 **Q10.Java 中操作字符串都有哪些类？它们之间有什么区别？**
 
-主要是String、StringBuffer、StringBuild类。<br>
-String 类是 final 类型的，因此不可以继承这个类、不能修改这个类，底层源码中有针对String数据的修改方法，都是重新创建了一个String对象，而原来的String对象未曾改变。对于字符串常量，如果内容相同，Java 认为它们代表同 一个 String 对象。而用关键字new调用构造器，总是会创建一个新的对象，无论内容是否相同。字符串如果是变量相加，先开空间，在拼接。字符串如果是常量相加，是先加，然后在常量池找，如果有就直接返回，否则，就创建。<br>
-<br>
-但是为了提高效率节省空间并且可以更改对String类型数据直接更改，我们可使用用StringBuffer 类。StringBuffer线程安全，同步，效率低，开销大，因此可以改用StringBuilder。StringBuilder线程不安全，异步，效率高。<br>
+主要是String、StringBuffer、StringBuild类。
+String 类是 final 类型的，因此不可以继承这个类、不能修改这个类，底层源码中有针对String数据的修改方法，都是重新创建了一个String对象，而原来的String对象未曾改变。对于字符串常量，如果内容相同，Java 认为它们代表同 一个 String 对象。而用关键字new调用构造器，总是会创建一个新的对象，无论内容是否相同。字符串如果是变量相加，先开空间，在拼接。字符串如果是常量相加，是先加，然后在常量池找，如果有就直接返回，否则，就创建。
+
+但是为了提高效率节省空间并且可以更改对String类型数据直接更改，我们可使用用StringBuffer 类。StringBuffer线程安全，同步，效率低，开销大，因此可以改用StringBuilder。StringBuilder线程不安全，异步，效率高。
 
 **Q11.什么是同步和异步？什么是线程安全？**
 
 同步：可以理解为在执行完一个函数或方法之后，一直等待系统返回值或消息，这时程序是出于阻塞的，只有接收到返回的值或消息后才往下执行其他的命令。如打电话，通信双方不能断（我们是同时进行，同步），你一句我一句，这样的好处是，对方想表达的信息我马上能收到，但是，我在打着电话，我无法做别的事情。
-<br>
+
 异步：执行完函数或方法后，不必阻塞性地等待返回值或消息，只需要向系统委托一个异步过程，那么当系统接收到返回值或消息时，系统会自动触发委托的异步过程，从而完成一个完整的流程。如收发收短信，对方不用保证此刻我一定在手机旁，同时，我也不用时刻留意手机有没有来短信。这样的话，我看着视频，然后来了短信，我就处理短信（也可以不处理），接着再看视频。
-<br>
+
 线程安全：多个线程访问同一个对象时，如果不用考虑这些线程在运行时环境下的调度和交替执行，也不需要进行额外的同步，或者在调用方进行任何其他操作，调用这个对象的行为都可以获得正确的结果，那么这个对象就是线程安全的。一个类或者程序所提供的接口对于线程来说是[原子操作](https://baike.baidu.com/item/%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C)或者多个线程之间的切换不会导致该接口的执行结果存在二义性,也就是说我们不用考虑同步的问题。
-<br>
+
 线程安全问题大多是由[全局变量](https://baike.baidu.com/item/%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F)及[静态变量](https://baike.baidu.com/item/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F)引起的，局部变量逃逸也可能导致线程安全问题。
-<br>
+
 若每个线程中对全局变量、静态变量只有读操作，而无写操作，一般来说，这个全局变量是线程安全的；若有多个线程同时执行写操作，一般都需要考虑[线程同步](https://baike.baidu.com/item/%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5)，否则的话就可能影响线程安全。
 
 **Q12.String str1="i"与 String str2=new String(“i”)一样吗？**
 
-String str2 = new String(“i”)会创建2（1）个对象，String str1 = “i”创建1（0）个对象。 <br>
-==注==:当字符串常量池中有对象hello时括号内成立！<br>
-str1 ==str2 的判断为false;<br>
-str1 .equals(str2 )为true<br>
+String str2 = new String(“i”)会创建2（1）个对象，String str1 = “i”创建1（0）个对象。 
+==注==:当字符串常量池中有对象hello时括号内成立！
+str1 ==str2 的判断为false;
+str1 .equals(str2 )为true
 
 **Q13.String 类的常用方法都有那些？**
 
-1、求字符串长度<br>
-**public int length()**//返回该字符串的长度<br>
-2、求字符串某一位置字符<br>
-**public char charAt(int index)**//返回字符串中指定位置的字符；注意字符串中第一个字符索引是0，最后一个是length()-1。<br>
-3、提取子串<br>
-用String类的substring方法可以提取字符串中的子串，该方法有两种常用参数:<br>
-1)**public String substring(int beginIndex)**//该方法从beginIndex位置起，从当前字符串中取出剩余的字符作为一个新的字符串返回。<br>
-2)**public String substring(int beginIndex, int en<br>dIndex)**//该方法从beginIndex位置起，从当前字符串中取出到endIndex-1位置的字符作为一个新的字符串返回。<br>
-4、字符串比较<br>
-1)**public int compareTo(String anotherString)**//该方法是对字符串内容按字典顺序进行大小比较，通过返回的整数值指明当前字符串与参数字符串的大小关系。若当前对象比参数大则返回正整数，反之返回负整数，相等返回0。<br>
-2)**public int compareToIgnore(String anotherString)**//与compareTo方法相似，但忽略大小写。<br>
-3)**public boolean equals(Object anotherObject)**//比较当前字符串和参数字符串，在两个字符串相等的时候返回true，否则返回false。<br>
-4)**public boolean equalsIgnoreCase(String anotherString)**//与equals方法相似，但忽略大小写。<br>
-5、字符串连接<br>
-**public String concat(String str)**//将参数中的字符串str连接到当前字符串的后面，效果等价于"+"。<br>
-6、字符串中单个字符查找<br>
-1)**public int indexOf(int ch/String str)**//用于查找当前字符串中字符或子串，返回字符或子串在当前字符串中从左边起首次出现的位置，若没有出现则返回-1。<br>
-2)**public int indexOf(int ch/String str, int fromIndex)**//改方法与第一种类似，区别在于该方法从fromIndex位置向后查找。<br>
-3)**public int lastIndexOf(int ch/String str)**//该方法与第一种类似，区别在于该方法从字符串的末尾位置向前查找。<br>
-4)**public int lastIndexOf(int ch/String str, int fromIndex)**//该方法与第二种方法类似，区别于该方法从fromIndex位置向前查找。<br>
-7、字符串中字符的大小写转换<br>
-1)**public String toLowerCase()**//返回将当前字符串中所有字符转换成小写后的新串<br>
-2)**public String toUpperCase()**//返回将当前字符串中所有字符转换成大写后的新串<br>
-8、字符串中字符的替换<br>
-1)**public String replace(char oldChar, char newChar)**//用字符newChar替换当前字符串中所有的oldChar字符，并返回一个新的字符串。<br>
-2)**public String replaceFirst(String regex, String replacement)**//该方法用字符replacement的内容替换当前字符串中遇到的第一个和字符串regex相匹配的子串，应将新的字符串返回。<br>
-3)**public String replaceAll(String regex, String replacement)**//该方法用字符replacement的内容替换当前字符串中遇到的所有和字符串regex相匹配的子串，应将新的字符串返回。<br>
-9、其他类方法<br>
-1)**String trim()**//截去字符串两端的空格，但对于中间的空格不处理。<br>
-2)**boolean statWith(String prefix)**或**boolean endWith(String suffix)**//用来比较当前字符串的起始字符或子字符串prefix和终止字符或子字符串suffix是否和当前字符串相同，重载方法中同时还可以指定比较的开始位置offset。<br>
-3)**regionMatches(boolean b, int firstStart, String other, int otherStart, int length)**//从当前字符串的firstStart位置开始比较，取长度为length的一个子字符串，other字符串从otherStart位置开始，指定另外一个长度为length的字符串，两字符串比较，当b为true时字符串不区分大小写。<br>
-4)**contains(String** **str)**//判断参数s是否被包含在字符串中，并返回一个布尔类型的值。<br>
-10、字符串转换为基本类型<br>
-java.lang包中有Byte、Short、Integer、Float、Double类的调用方法：<br>
-1)**public static byte parseByte(String s)**<br>
-2)**public static short parseShort(String s)**<br>
-3)**public static short parseInt(String s)**<br>
-4)**public static long parseLong(String s)**<br>
-5)**public static float parseFloat(String s)**<br>
-6)**public static double parseDouble(String s)**<br>
-11、基本类型转换为字符串类型<br>
-String类中提供了String valueOf()放法，用作基本类型转换为字符串类型。<br>
-1)**static String valueOf(char data[])**<br>
-2)**static String valueOf(char data[], int offset, int count)**<br>
-3)**static String valueOf(boolean b)**<br>
-4)**static String valueOf(char c)**<br>
-5)**static String valueOf(int i)**<br>
-6)**static String valueOf(long l)**<br>
-7)**static String valueOf(float f)**<br>
-8)**static String valueOf(double d)**<br>
-12、进制转换<br>
-使用Long类中的方法得到整数之间的各种进制转换的方法：<br>
-Long.toBinaryString(long l)<br>
-Long.toOctalString(long l)<br>
-Long.toHexString(long l)<br>
-Long.toString(long l, int p)//p作为任意进制<br>
-<br>
+1、求字符串长度
+**public int length()**//返回该字符串的长度
+2、求字符串某一位置字符
+**public char charAt(int index)**//返回字符串中指定位置的字符；注意字符串中第一个字符索引是0，最后一个是length()-1。
+3、提取子串
+用String类的substring方法可以提取字符串中的子串，该方法有两种常用参数:
+1\)**public String substring(int beginIndex)**//该方法从beginIndex位置起，从当前字符串中取出剩余的字符作为一个新的字符串返回。
+2\)**public String substring(int beginIndex, int endIndex)**//该方法从beginIndex位置起，从当前字符串中取出到endIndex-1位置的字符作为一个新的字符串返回。
+4、字符串比较
+1\)**public int compareTo(String anotherString)**//该方法是对字符串内容按字典顺序进行大小比较，通过返回的整数值指明当前字符串与参数字符串的大小关系。若当前对象比参数大则返回正整数，反之返回负整数，相等返回0。
+2\)**public int compareToIgnore(String anotherString)**//与compareTo方法相似，但忽略大小写。
+3\)**public boolean equals(Object anotherObject)**//比较当前字符串和参数字符串，在两个字符串相等的时候返回true，否则返回false。
+4\)**public boolean equalsIgnoreCase(String anotherString)**//与equals方法相似，但忽略大小写。
+5、字符串连接
+**public String concat(String str)**//将参数中的字符串str连接到当前字符串的后面，效果等价于"+"。
+6、字符串中单个字符查找
+1\)**public int indexOf(int ch/String str)**//用于查找当前字符串中字符或子串，返回字符或子串在当前字符串中从左边起首次出现的位置，若没有出现则返回-1。
+2\)**public int indexOf(int ch/String str, int fromIndex)**//改方法与第一种类似，区别在于该方法从fromIndex位置向后查找。
+3\)**public int lastIndexOf(int ch/String str)**//该方法与第一种类似，区别在于该方法从字符串的末尾位置向前查找。
+4\)**public int lastIndexOf(int ch/String str, int fromIndex)**//该方法与第二种方法类似，区别于该方法从fromIndex位置向前查找。
+7、字符串中字符的大小写转换
+1\)**public String toLowerCase()**//返回将当前字符串中所有字符转换成小写后的新串
+2\)**public String toUpperCase()**//返回将当前字符串中所有字符转换成大写后的新串
+8、字符串中字符的替换
+1\)**public String replace(char oldChar, char newChar)**//用字符newChar替换当前字符串中所有的oldChar字符，并返回一个新的字符串。
+2\)**public String replaceFirst(String regex, String replacement)**//该方法用字符replacement的内容替换当前字符串中遇到的第一个和字符串regex相匹配的子串，应将新的字符串返回。
+3\)**public String replaceAll(String regex, String replacement)**//该方法用字符replacement的内容替换当前字符串中遇到的所有和字符串regex相匹配的子串，应将新的字符串返回。
+9、其他类方法
+1\)**String trim()**//截去字符串两端的空格，但对于中间的空格不处理。
+2\)**boolean statWith(String prefix)**或**boolean endWith(String suffix)**//用来比较当前字符串的起始字符或子字符串prefix和终止字符或子字符串suffix是否和当前字符串相同，重载方法中同时还可以指定比较的开始位置offset。
+3\)**regionMatches(boolean b, int firstStart, String other, int otherStart, int length)**//从当前字符串的firstStart位置开始比较，取长度为length的一个子字符串，other字符串从otherStart位置开始，指定另外一个长度为length的字符串，两字符串比较，当b为true时字符串不区分大小写。
+4\)**contains(String** **str)**//判断参数s是否被包含在字符串中，并返回一个布尔类型的值。
+10、字符串转换为基本类型
+java.lang包中有Byte、Short、Integer、Float、Double类的调用方法：
+1\)**public static byte parseByte(String s)**
+2\)**public static short parseShort(String s)**
+3\)**public static short parseInt(String s)**
+4\)**public static long parseLong(String s)**
+5\)**public static float parseFloat(String s)**
+6\)**public static double parseDouble(String s)**
+11、基本类型转换为字符串类型
+String类中提供了String valueOf()放法，用作基本类型转换为字符串类型。
+1\)**static String valueOf(char data\[])**
+2\)**static String valueOf(char data\[], int offset, int count)**
+3\)**static String valueOf(boolean b)**
+4\)**static String valueOf(char c)**
+5\)**static String valueOf(int i)**
+6\)**static String valueOf(long l)**
+7\)**static String valueOf(float f)**
+8\)**static String valueOf(double d)**
+12、进制转换
+使用Long类中的方法得到整数之间的各种进制转换的方法：
+Long.toBinaryString(long l)
+Long.toOctalString(long l)
+Long.toHexString(long l)
+Long.toString(long l, int p)//p作为任意进制
+
 **Q14.如何将字符串反转？**
 
 ```java
@@ -180,49 +182,52 @@ public class ReverseString {
 
 **Q15.final 在 java 中有什么作用？**
 
-final 修饰的类叫最终类，该类不能被继承。<br>
-final 修饰的方法不能被重写。<br>
-final 修饰的变量叫常量，常量必须初始化，初始化之后值就不能被修改。<br>
-使用 final 关键字修饰一个变量时，是指引用变量不能变，引用变量所指向的对象中的内容 还是可以改变的。<br>
+final 修饰的类叫最终类，该类不能被继承。
+final 修饰的方法不能被重写。
+final 修饰的变量叫常量，常量必须初始化，初始化之后值就不能被修改。
+使用 final 关键字修饰一个变量时，是指引用变量不能变，引用变量所指向的对象中的内容 还是可以改变的。
 
 **Q16.java 中的 Math.round(-1.5) 等于多少？**
 
-Ceil向上取整，floor向下取整。Round先对一个树+0.5，然后向下取整。因此这个表达式的值为-1<br>
+Ceil向上取整，floor向下取整。Round先对一个树+0.5，然后向下取整。因此这个表达式的值为-1
 
 **Q17.是否可以从一个 static 方法内部发出对非 static 方法的调用？**
 
-不可以。因为非 static 方法是要与对象关联在一起的，必须创建一个对象后，才可以在该对 象上进行方法调用，而 static 方法调用时不需要创建对象，可以直接调用。也就是说，当一 个 static 方法被调用时，可能还没有创建任何实例对象，如果从一个 static 方法中发出对非 static 方法的调用，那个非 static 方法是关联到哪个对象上的呢？这个逻辑无法成立，所以， 一个 static 方法内部发出对非 static 方法的调用。/<br>
+不可以。因为非 static 方法是要与对象关联在一起的，必须创建一个对象后，才可以在该对 象上进行方法调用，而 static 方法调用时不需要创建对象，可以直接调用。也就是说，当一 个 static 方法被调用时，可能还没有创建任何实例对象，如果从一个 static 方法中发出对非 static 方法的调用，那个非 static 方法是关联到哪个对象上的呢？这个逻辑无法成立，所以， 一个 static 方法内部发出对非 static 方法的调用。/
 
 **Q18.Overload 和 Override 的区别。Overloaded 的方法是否可以改变返回值的类型?**
 
-Overload是重载的意思，Override是覆盖的意思，也就是重写。<br>
+Overload是重载的意思，Override是覆盖的意思，也就是重写。
 
-重载 Overload表示同一个类中可以有多个名称相同的方法，但这些方法的参数列表各不相同（即参数个数或类型不同）。<br>
+重载 Overload表示同一个类中可以有多个名称相同的方法，但这些方法的参数列表各不相同（即参数个数或类型不同）。
 
-重写 Override 表示子类中的方法可以与父类中的某个方法的名称和参数完全相同，通过子类创建的实例对象调用这个方法时，将调用子类中的定义方法，这相当于把父类中定义的那个完全相同的方法给覆盖了，这也是面向对象编程的多态性的一种表现。<br>
+重写 Override 表示子类中的方法可以与父类中的某个方法的名称和参数完全相同，通过子类创建的实例对象调用这个方法时，将调用子类中的定义方法，这相当于把父类中定义的那个完全相同的方法给覆盖了，这也是面向对象编程的多态性的一种表现。
 
-子类覆盖父类的方法时，只能比父类抛出更少的异常，或者是抛出父类抛出的异常的子异常，因为子类可以解决父类的一些问题，不能比父类有更多的问题。<br>
+子类覆盖父类的方法时，只能比父类抛出更少的异常，或者是抛出父类抛出的异常的子异常，因为子类可以解决父类的一些问题，不能比父类有更多的问题。
 
-子类方法的访问权限只能比父类的更大，不能更小。如果父类的方法是 private 类型，那么，子类则不存在覆盖的限制，相当于子类中增加了一个全新的方法。<br>
+子类方法的访问权限只能比父类的更大，不能更小。如果父类的方法是 private 类型，那么，子类则不存在覆盖的限制，相当于子类中增加了一个全新的方法。
 
-==如果几个 Overloaded 的方法的参数列表不一样，它们的返回者类型当然也可以不一样。如果两个方法的参数列表完全一样，是否可以让它们的返回值不同来实现重载 Overload?==<br>
+如果几个 Overloaded 的方法的参数列表不一样，它们的返回者类型当然也可以不一样。如果两个方法的参数列表完全一样，是否可以让它们的返回值不同来实现重载 Overload?
 
-这是不行的，我们可以用反证法来说明这个问题， 因为我们有时候调用一个方法时也可以不定义返回结果变量，即不要关心其返回结果，例如，我们调用 map.remove(key)方法时，虽然 remove 方法有返回值，但是我们通常都不会定义接收返回结果的变量，这时候假设该类中有两个名称和参数列表完全相同的方法，仅仅是返回类型不同,java 就无法确定编程者倒底是想调用哪个方法了，因为它无法通过返回结果类型来判断。 override 可以翻译为覆盖，从字面就可以知道，它是覆盖了一个方法并且对其重写，以求达到不同的作用。对我们来说最熟悉的覆盖就是对接口方法的实现，在接口中一般只是对方法 进行了声明，而我们在实现时，就需要实现接口声明的所有方法。除了这个典型的用法以外， 我们在继承中也可能会在子类覆盖父类中的方法。<br>
+这是不行的，我们可以用反证法来说明这个问题， 因为我们有时候调用一个方法时也可以不定义返回结果变量，即不要关心其返回结果，例如，我们调用 map.remove(key)方法时，虽然 remove 方法有返回值，但是我们通常都不会定义接收返回结果的变量，这时候假设该类中有两个名称和参数列表完全相同的方法，仅仅是返回类型不同,java 就无法确定编程者倒底是想调用哪个方法了，因为它无法通过返回结果类型来判断。 override 可以翻译为覆盖，从字面就可以知道，它是覆盖了一个方法并且对其重写，以求达到不同的作用。对我们来说最熟悉的覆盖就是对接口方法的实现，在接口中一般只是对方法 进行了声明，而我们在实现时，就需要实现接口声明的所有方法。除了这个典型的用法以外， 我们在继承中也可能会在子类覆盖父类中的方法。
 
-在覆盖要注意以下的几点：<br>
+在覆盖要注意以下的几点：
 
-1、覆盖的方法的标志必须要和被覆盖的方法的标志完全匹配，才能达到覆盖的效果；<br>
-2、覆盖的方法的返回值必须和被覆盖的方法的返回一致；<br>
-3、覆盖的方法所抛出的异常必须和被覆盖方法的所抛出的异常一致，或者是其子类；<br>
-4、被覆盖的方法不能为 private，否则在其子类中只是新定义了一个方法，并没有对其进行覆盖。<br>
-5、父类方法中的static、final修饰的方法，不可覆盖。<br>
+1、覆盖的方法的标志必须要和被覆盖的方法的标志完全匹配，才能达到覆盖的效果；
 
-overload 对我们来说可能比较熟悉，可以翻译为重载，它是指我们可以定义一些名称相同的方法，通过定义不同的输入参数来区分这些方法，然后再调用时，VM 就会根据不同的参数样式，来选择合适的方法执行。<br>
-在使用重载要注意以下的几点：<br>
-1、在使用重载时只能通过不同的参数样式。例如，不同的参数类型，不同的参数个数，不同的参数顺序（当然，同一方法内的几个参数类型必须不一样，例如可以是 fun(int,float)， 但是不能为 fun(int,int)）； <br>
-2、不能通过访问权限、返回类型、抛出的异常进行重载；<br>
-3、方法的异常类型和数目不会对重载造成影响；<br>
-4、对于继承来说，如果某一方法在父类中是访问权限是 priavte，那么就不能在子类对其进 行重载，如果定义的话，也只是定义了一个新方法，而不会达到重载的效果。<br>
+2、覆盖的方法的返回值必须和被覆盖的方法的返回一致；
+
+3、覆盖的方法所抛出的异常必须和被覆盖方法的所抛出的异常一致，或者是其子类；
+
+4、被覆盖的方法不能为 private，否则在其子类中只是新定义了一个方法，并没有对其进行覆盖。
+
+overload 对我们来说可能比较熟悉，可以翻译为重载，它是指我们可以定义一些名称相同的方法，通过定义不同的输入参数来区分这些方法，然后再调用时，VM 就会根据不同的参数样式，来选择合适的方法执行。在使用重载要注意以下的几点：
+
+1、在使用重载时只能通过不同的参数样式。例如，不同的参数类型，不同的参数个数，不同的参数顺序（当然，同一方法内的几个参数类型必须不一样，例如可以是 fun(int,float)， 但是不能为 fun(int,int)）； 2、不能通过访问权限、返回类型、抛出的异常进行重载；
+
+3、方法的异常类型和数目不会对重载造成影响；
+
+4、对于继承来说，如果某一方法在父类中是访问权限是 priavte，那么就不能在子类对其进 行重载，如果定义的话，也只是定义了一个新方法，而不会达到重载的效果。
 
 **Q19.构造器 Constructor 是否可被 override?**
 
@@ -230,70 +235,74 @@ overload 对我们来说可能比较熟悉，可以翻译为重载，它是指�
 
 **Q20.abstract class 和 interface 有什么区别?**
 
-Abstract：<br>
-* 含有 abstract 修饰符的 class 即为抽象类，abstract 类不能创建的实例对象。<br>
-* 含有 abstract 方法的类必须定义为abstract class，abstract class类中的方法不必是抽象的。abstract class类中定义抽象方法必须在具体(Concrete)子类中实现，所以，不能有抽象构造方法或抽象静态方法。<br>
-* 如果的子类没有实现抽象父类中的所有抽象方法，那么子类也必须定义为 abstract 类型。<br>
+Abstract：
 
-接口（interface）可以说成是抽象类的一种特例，接口中的所有方法都必须是抽象的。<br>
-接口中的方法定义默认为 public abstract 类型，接口中的成员变量类型默认为public static final。<br>
+- 含有 abstract 修饰符的 class 即为抽象类，abstract 类不能创建的实例对象。
+- 含有 abstract 方法的类必须定义为abstract class，abstract class类中的方法不必是抽象的。abstract class类中定义抽象方法必须在具体(Concrete)子类中实现，所以，不能有抽象构造方法或抽象静态方法。
+- 如果的子类没有实现抽象父类中的所有抽象方法，那么子类也必须定义为 abstract 类型。
 
-两者区别：<br>
-1.抽象类可以有构造方法，接口中不能有构造方法。 <br>
-2.抽象类中可以有普通成员变量，接口中没有普通成员变量 <br>
-3.抽象类中可以包含非抽象的普通方法，接口中的所有方法必须都是抽象的，不能有非抽象 的普通方法。<br>
-4.抽象类中的抽象方法的访问类型可以是 public，protected 和（默认类型,虽然 eclipse 下不报错，但应该也不行），但接口中的抽象方法只能是 public 类型的，并且默认即 为 public abstract 类型。 <br>
-5.抽象类中可以包含静态方法，接口中不能包含静态方法 <br>
-6.抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任 意，但接口中定义的变量只能是 public static final 类型，并且默认即为 public static final 类型。<br>
-7.一个类可以实现多个接口，但只能继承一个抽象类。<br>
+接口（interface）可以说成是抽象类的一种特例，接口中的所有方法都必须是抽象的。
+接口中的方法定义默认为 public abstract 类型，接口中的成员变量类型默认为public static final。
+
+两者区别：
+1.抽象类可以有构造方法，接口中不能有构造方法。 
+2.抽象类中可以有普通成员变量，接口中没有普通成员变量 
+3.抽象类中可以包含非抽象的普通方法，接口中的所有方法必须都是抽象的，不能有非抽象 的普通方法。
+4.抽象类中的抽象方法的访问类型可以是 public，protected 和（默认类型,虽然 eclipse 下不报错，但应该也不行），但接口中的抽象方法只能是 public 类型的，并且默认即 为 public abstract 类型。 
+5.抽象类中可以包含静态方法，接口中不能包含静态方法 
+6.抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任 意，但接口中定义的变量只能是 public static final 类型，并且默认即为 public static final 类 型。
+7.一个类可以实现多个接口，但只能继承一个抽象类。
 
 **Q21.接口是否可继承接口?抽象类是否可实现(implements)接口?抽象类是否可 继承具体类(concrete class)?抽象类中是否可以有静态的 main 方法？**
 
-接口可以继承接口。抽象类可以实现(implements)接口，抽象类可以继承具体类。抽象类中 可以有静态的 main 方法。抽象类与普通类的唯一区别：就是不能创建实例对象和允许有 abstract 方法。<br>
+接口可以继承接口。抽象类可以实现(implements)接口，抽象类可以继承具体类。抽象类中 可以有静态的 main 方法。抽象类与普通类的唯一区别：就是不能创建实例对象和允许有 abstract 方法。
 
 **Q22.Java 中实现多态的机制是什么？**
 
-靠的是父类或接口定义的引用变量可以指向子类或具体实现类的实例对象，而程序调用的方 法在运行期才动态绑定，就是引用变量所指向的具体实例对象的方法，也就是内存里正在运 行的那个对象的方法，而不是引用变量的类型中定义的方法。<br>
+靠的是父类或接口定义的引用变量可以指向子类或具体实现类的实例对象，而程序调用的方 法在运行期才动态绑定，就是引用变量所指向的具体实例对象的方法，也就是内存里正在运 行的那个对象的方法，而不是引用变量的类型中定义的方法。
 
 **Q22.说出一些常用的类，包，接口，请各举 5 个？**
 
-常用的类：BufferedReader BufferedWriter FileReader FileWirter String Integer java.util.Date，System，Class，List,HashMap<br>
-常用的包：java.lang java.io java.util java.sql,javax.servlet,org.hibernate<br>
-常用的接口：Remote List Map Document NodeList,Servlet,HttpServletRequest,HttpServletResponse,Transaction(Hibernate)、 Session(Hibernate),HttpSession<br>
+常用的类：BufferedReader BufferedWriter FileReader FileWirter String Integer java.util.Date，System，Class，List,HashMap
+常用的包：java.lang java.io java.util java.sql,javax.servlet,org.hibernate
+常用的接口：Remote List Map Document NodeList,Servlet,HttpServletRequest,HttpServletResponse,Transaction(Hibernate)、 Session(Hibernate),HttpSession
 
 **Q23.Java类的初始化顺序**
 
 _普通类中：_
-*   静态变量
-*   静态代码块
-*   普通变量
-*   普通代码块
-*   构造函数
+
+- 静态变量
+- 静态代码块
+- 普通变量
+- 普通代码块
+- 构造函数
 
 _含有子类的：_
-*   父类静态变量
-*   父类静态代码块
-*   子类静态变量
-*   子类静态代码块
-*   父类普通变量
-*   父类普通代码块
-*   父类构造函数
-*   子类普通变量
-*   子类普通代码块
-*   子类构造函数
+
+- 父类静态变量
+- 父类静态代码块
+- 子类静态变量
+- 子类静态代码块
+- 父类普通变量
+- 父类普通代码块
+- 父类构造函数
+- 子类普通变量
+- 子类普通代码块
+- 子类构造函数
 
 _含有接口、抽象类、实现类的_
-*   接口静态变量
-*   抽象类静态变量
-*   抽象类静态代码块
-*   实现类静态变量
-*   实习类静态代码块
-*   抽象类普通变量
-*   抽象类普通代码块
-*   抽象类构造函数
-*   实现类普通变量
-*   实现类普通代码块
-*   实现类构造函数
+
+- 接口静态变量
+- 抽象类静态变量
+- 抽象类静态代码块
+- 实现类静态变量
+- 实习类静态代码块
+- 抽象类普通变量
+- 抽象类普通代码块
+- 抽象类构造函数
+- 实现类普通变量
+- 实现类普通代码块
+- 实现类构造函数
 
 **Q23.private可以通过反射访问，那么private的意义是什么**
 
@@ -331,9 +340,10 @@ float []f[] = new float[6][6];
 float [][]f = new float[6][6];
 float [][]f = new float[6][];
 ```
+
 **Q29.String str = new String(“abc”)在内存中如何分配？**
 
-“abc”保存在常量池中，str作为对象被保存在堆中，然而Java7后，将常量池放在了堆里。<br>
+“abc”保存在常量池中，str作为对象被保存在堆中，然而Java7后，将常量池放在了堆里。 
 
 **Q30.下列程序中有什么错误？**
 
@@ -538,9 +548,10 @@ _**Map:**_
 
 共同点：都完成了Map接口的实现
 区别：
-* HashMap允许空键值，异步处理，非线程安全，只有一个线程的情况下效率高于HashTable。HashTable同步，线程安全。
-* HashMap将HashTable中的contains方法更改为containsvalue和containskey。
-* HashMap是Map接口的一个实现，HashTable基于陈旧的Dictionary抽象类。
+
+- HashMap允许空键值，异步处理，非线程安全，只有一个线程的情况下效率高于HashTable。HashTable同步，线程安全。
+- HashMap将HashTable中的contains方法更改为containsvalue和containskey。
+- HashMap是Map接口的一个实现，HashTable基于陈旧的Dictionary抽象类。
 
 **Q6.HashMap 和 Hashtable的实现原理，主要讲讲HashMap的原理？（HashMap的1.7和1.8的区别）**
 
@@ -563,6 +574,7 @@ put原理根据key值获取相应的hash值：
 ```java
 int hash = hash(key.has.hascode())
 ```
+
 其实就是使用哈希表原理中的除留余数法来确定key值应该在数组中的位置，数组的作用是充当索引，key值相同映射到数组中的同一位置，使用头插法放在表头。
 
 get原理利用hash值先进行数组中定位，再遍历链表使用equals()方法匹配。
@@ -575,25 +587,27 @@ HashMap没有加锁，因此造成了非线程安全，若HashMap接近临界点
 
 JDK8中HashMap引入了红黑树（自平衡二叉树），提升了查询，插入和删除
 
-**Q6.ConcurrentHashMap的原理？（的1.7和1.8的区别）**
+**Q7.ConcurrentHashMap的原理？（的1.7和1.8的区别）**
 
 concurrenthashmap既可以保证安全，又能保证性能。其原理就是一个二级哈希表，一个总的哈希表下面有若干子哈希表，由segement数组组成，使用分段锁，并行插入时效率高。
 
 concurrenthashmap的put原理：
-* 先为key值做hash运算，通过hash值定位到segement对象
-* 获取可重入锁，对分段进行加锁
-* 再次计算hash值，定位到segemen里的具体位置
-* 插入或者覆盖HashEntry对象
-* 释放锁
+
+- 先为key值做hash运算，通过hash值定位到segement对象
+- 获取可重入锁，对分段进行加锁
+- 再次计算hash值，定位到segemen里的具体位置
+- 插入或者覆盖HashEntry对象
+- 释放锁
 
 get原理：
-* 为输入的key做hash运算，得到hash值
-* 通过hash值，定位到对应的segement对象
-* 再次通过hash值，定位到segement当中数组的具体位置
+
+- 为输入的key做hash运算，得到hash值
+- 通过hash值，定位到对应的segement对象
+- 再次通过hash值，定位到segement当中数组的具体位置
 
 JDK8中，concurrenthashmap放弃了segement分段机制，利用Node数组+CAS+Synchronized来保证并发更新安全，底层为数组+链表+红黑树。
 
-**Q7.说一下 HashSet 的实现原理？**
+**Q8.说一下 HashSet 的实现原理？**
 
 实现了Set接口，但底层由HashMap支持，不包含重复元素，且维持自己的内部排序，可使用null。
 
@@ -627,103 +641,243 @@ try{
 }caatch(CloneNotSupportedException e){
   throw new InternalError();
 }
-
 ```
 
-**Q8.ArrayList 和 LinkedList 的区别是什么？**
+**Q9.ArrayList 和 LinkedList 的区别是什么？**
 
-**Q9.如何实现数组和 List 之间的转换？**
+其本质就是顺序表与链表的区别：只不过ArrayList实现了动态扩容。传统顺序表的存储空间是一次性分配，且空间地址连续。
+1.ArrayList的实现是基于数组，LinkedList的实现是基于双向链表。 
+2. 对于随机访问，ArrayList优于LinkedList，以O(1)时间复杂度对元素进行随机访问。LinkedList的每一个元素都依靠地址指针和它后一个元素连接在一起，在这种情况下，查找某个元素的时间复杂度是O(n)。
+3. 对于插入和删除操作，LinkedList优于ArrayList。当元素被添加到LinkedList任意位置的时候，不需要像ArrayList那样重新计算大小或者是更新索引。
+4. LinkedList比ArrayList更占内存，因为LinkedList的节点除了存储数据，还存储了两个引用，一个指向前一个元素，一个指向后一个元素。
 
-**Q10.ArrayList 和 Vector 的区别是什么？**
+**Q10.如何实现数组和 List 之间的转换？**
 
-**Q11.Array 和 ArrayList 有何区别？**
+List转数组：toArray(arraylist.size()方法
 
-**Q12.在 Queue 中 poll()和 remove()有什么区别？**
+```java
+ArrayList<String> list = new ArrayList<String>();
+		 list.add("dff1");
+		 list.add("dff2");
+		 list.add("dff3");
+		 list.add("dff4");
+		 list.add("dff5");
+		 String[] array = new String[list.size()];
+		 String[] s=list.toArray(array);
+		 System.out.println(Arrays.toString(s));
+```
+数组转List：Arrays的asList(a)方法
+
+```java
+String[] string=new String[]{"s1","s2","s3","s4","s5"};
+		  
+		 List<String> li= Arrays.asList(string);
+		 
+		 System.out.println(li);
+```
+
+**Q11.Array、ArrayList 和 Vector 的区别是什么？**
+
+a. Array是静态连续分配的一片内存区域，与ArrayList相比、不能动态改变大小，通过Arrays进行sort、binarySearch等操作；
+
+b. ArrayList是继承自List的可动态改变大小的数组，和Array一样要求连续分配，内部封闭了一个Object数组，许多方法直接调用Arrays实现；
+
+c. Vector和ArrayList功能基本一致，但Vector是线程安全的。
+
+效率由高到低依次为：Array、ArrayList、Vector。
+
+**Q12.在 Queue 中 add()和offer()、poll()和 remove()、element()和peek()有什么区别？**
+
+1.queue的增加元素方法add和offer的区别在于，add方法在队列满的情况下将选择抛异常的方法来表示队列已经满了，而offer方法通过返回false表示队列已经满了；在有限队列的情况，使用offer方法优于add方法；
+
+2.remove方法和poll方法都是删除队列的头元素，remove方法在队列为空的情况下将抛异常，而poll方法将返回null；
+
+3.element和peek方法都是返回队列的头元素，但是不删除头元素，区别在与element方法在队列为空的情况下，将抛异常，而peek方法将返回null.
 
 **Q13.哪些集合类是线程安全的？**
 
-**Q14.迭代器 Iterator 是什么？**
+* vector：就比arraylist多了个同步化机制（线程安全），效率较低。
+* statck：堆栈类，先进后出
+* hashtable：就比hashmap多了个线程安全
+* enumeration：枚举，相当于迭代器
 
-**Q15.Iterator 怎么使用？有什么特点？**
+**Q14.迭代器 Iterator 是什么？Iterator 怎么使用？有什么特点？**
 
-**Q16.Iterator 和 ListIterator 有什么区别？**
+在Java中，有很多的数据容器，对于这些的操作有很多的共性。Java采用了迭代器来为各种容器提供了公共的操作接口。这样使得对容器的遍历操作与其具体的底层实现相隔离，达到解耦的效果。
 
-**Q17.怎么确保一个集合不能被修改？**
+_**Iterator遍历集合元素有以下几个特点:**_
+* Iterator遍历集合元素的过程中不允许线程对集合元素进行修改，否则会抛出ConcurrentModificationEception的异常。
+* Iterator遍历集合元素的过程中可以通过remove方法来移除集合中的元素。
+* Iterator必须依附某个Collection对象而存在，Iterator本身不具有装载数据对象的功能。
+* Iterator.remove方法删除的是上一次Iterator.next()方法返回的对象。
+* 强调以下next（）方法，该方法通过游标指向的形式返回Iterator下一个元素。
 
+**_itertor接口中常用的方法：_**
+* boolean型的hasNext()，如果仍有元素可以迭代返回true
+* E型的next()，返回迭代的下一个元素
+* void型的remove()，从迭代器指向的collection中移除迭代器返回的最后一个元素。
+* void forEachRemaining(Consumer action) ;使用Lambdda表达式的形式输出Iterator中所以的元素。注意该方法其实是间接调用next()方法进行遍历，所以再次是next（）方法的时候Iterator中的对象已经被遍历完了。
+
+**Q15.Iterator 和 ListIterator 有什么区别？**
+
+1\. ListIterator有add()方法，可以向List中添加对象，而Iterator不能
+
+2\. ListIterator和Iterator都有hasNext()和next()方法，可以实现顺序向后遍历，但是ListIterator有hasPrevious()和previous()方法，可以实现逆向（顺序向前）遍历。Iterator就不可以。
+
+3\. ListIterator可以定位当前的索引位置，nextIndex()和previousIndex()可以实现。Iterator没有此功能。
+
+4\. 都可实现删除对象，但是ListIterator可以实现对象的修改，set()方法可以实现。Iierator仅能遍历，不能修改。
+
+**Q16.怎么确保一个集合不能被修改？**
+
+```java
+Collections.unmodifiableList(List)
+Collections.unmodifiableMap(Map)
+Collections.unmodifiableSet(Set)
+```
+以上返回的集合对象都是不可修改的，调用修改方法会抛出异常UnsupportedOperationException，使用这种方法返回集合的一个只读视图。
 
 ### Q&S线程部分
 
 **Q1.并行和并发有什么区别？**
 
+
+
 **Q2.线程和进程的区别？**
+
+
 
 **Q3.守护线程是什么？**
 
+
+
 **Q4.创建线程有哪几种方式？**
+
+
 
 **Q5.说一下 runnable 和 callable 有什么区别？**
 
+
+
 **Q6.线程有哪些状态？**
+
+
 
 **Q7.sleep() 和 wait() 有什么区别？**
 
+
+
 **Q8.notify()和 notifyAll()有什么区别？**
+
+
 
 **Q9.线程的 run()和 start()有什么区别？**
 
+
+
 **Q10.创建线程池有哪几种方式？**
+
+
 
 **Q11.线程池都有哪些状态？**
 
+
+
 **Q12.线程池中 submit()和 execute()方法有什么区别？**
+
+
 
 **Q13.在 java 程序中怎么保证多线程的运行安全？**
 
+
+
 **Q14.多线程锁的升级原理是什么？**
+
+
 
 **Q15.什么是死锁？**
 
+
+
 **Q16.怎么防止死锁？**
+
+
 
 **Q17.ThreadLocal 是什么？有哪些使用场景？**
 
+
+
 **Q18.说一下 synchronized 底层实现原理？**
+
+
 
 **Q19.synchronized 和 volatile 的区别是什么？**
 
+
+
 **Q20.synchronized 和 Lock 有什么区别？**
+
+
 
 **Q21.synchronized 和 ReentrantLock 区别是什么？**
 
+
+
 **Q22.说一下 atomic 的原理？**
+
+
 
 ### Q&S反射部分
 
 **Q1.什么是反射？**
 
+
+
 **Q2.什么是 java 序列化？什么情况下需要序列化？**
+
+
 
 **Q3.动态代理是什么？有哪些应用？**
 
+
+
 **Q4.怎么实现动态代理？**
+
+
 
 ### Q&S异常部分
 
 **Q1.throw 和 throws 的区别？**
 
+
+
 **Q2.final、finally、finalize 有什么区别？**
+
+
 
 **Q3.try-catch-finally 中哪个部分可以省略？**
 
+
+
 **Q4.try-catch-finally 中，如果 catch 中 return 了，finally 还会执行吗？**
+
+
+
+**Q5.常见的异常类有哪些？**
+
 
 
 ### Q&S对象拷贝部分
 
 **Q1.为什么要使用克隆？**
 
+
+
 **Q2.如何实现对象克隆？**
 
+
 **Q3.深拷贝和浅拷贝区别是什么？**
+
+
 
 ### Q&SJava常考排序
