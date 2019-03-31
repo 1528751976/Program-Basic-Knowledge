@@ -1,7 +1,5 @@
 # JavaEE
 
-@toc
-
 ### JSP&Servlet部分
 
 **1. jsp 和 servlet 有什么区别？**
