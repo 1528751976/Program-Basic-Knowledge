@@ -852,7 +852,7 @@ _使用Callable和Future创建线程：_
 
 **Q11.线程池都有哪些状态？**
 
-![线程池状态]($resource/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%8A%B6%E6%80%81.png)
+![线程池状态](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/resource/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%8A%B6%E6%80%81.png)
 1、RUNNING<br>
 (1) 状态说明：线程池处在RUNNING状态时，能够接收新任务，以及对已添加的任务(堵塞队列中的任务)进行处理。 <br>
 (02) 状态切换：线程池的初始化状态是RUNNING。换句话说，线程池被一旦被创建，就处于RUNNING状态，并且线程池中的任务数为0！<br>
@@ -1048,7 +1048,7 @@ finally作为异常处理的一部分，它只能用在try/catch语句中，并�
 catch和finally不能同时省略。
 
 **Q4.常见的异常类有哪些？**
-![异常类]($resource/%E5%BC%82%E5%B8%B8%E7%B1%BB.jpg)
+![异常类](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/resource/%E5%BC%82%E5%B8%B8%E7%B1%BB.jpg)
 **Q5.运行时异常与一般异常有何异同？**
 
 一般异常表示程序运行过程中可能出现的非正常状态，运行时异常表示虚拟机的通常操作中可能遇到的异常，是一种常见运行错误。<br>
