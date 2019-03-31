@@ -11,8 +11,20 @@
 * [x] [OfferCode篇](https://github.com/Zhang-Yixuan/OfferCode)
 * [x] [Hadoop篇](https://github.com/Zhang-Yixuan/Hadoop_Learning)
 
+# 前端
+
+* [ ] [Html+CSS+JS篇](https://)
+* [ ] [Vue.js篇](https://)
+
+# Scala
+
+* [ ] [Scala基础篇](https://)
+* [ ] [Spark篇](https://)
+
+# Python
+
+* [ ] [Python基础篇](https://)
+
+
 在平日里，估计很少有人去在意这些基础问题。工作的人忙着做一些开发，学生们急于做项目，打比赛，很少能够静下心来仔仔细细的将这些基础问题掌握好。只有当求职的时候，才慌慌张张的去找笔试题来做，一做题才发现自己漏洞百出。写这个文档的目的，希望有人能够读到这份文档巩固基础。
-
-
-
 
