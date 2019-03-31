@@ -2,7 +2,7 @@
 
 ==感谢各位贡献者！==
 
-本项目主要涉及到Java语言、Hadoop五个部分。其中每个部分的问题都来自网上，答案是由本人整理的，难免有漏掉和有错误的地方，如果你有看到文档中存在任何问题，请指正，谢谢！
+本项目主要涉及到Java语言、数据库、前端、Hadoop、Scala和Python几个部分。每个部分都有相对应的基础题和常见面试题，文档编辑过程中难免有漏掉和有错误的地方，如果你有看到文档中存在任何问题，请指正，谢谢！
 
 # Java
 * [x] [JavaSE篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JavaSE/JavaSE.md)
