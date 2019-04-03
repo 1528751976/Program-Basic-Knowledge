@@ -243,7 +243,7 @@ TCP/IP：网络接口层、网际层、运输层、应用层<br>
 
 **7. 描述浏览器输入 www.baidu.com 访问的过程？**
 
-![网络地址解析]($resource/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90.png)
+![网络地址解析](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/resource/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90.png)
 
 发送HTTP会话到220.181.27.48过程拆解
 1. 客户端通过TCP进行封装数据包，输入到网络层，网络层通过查找路由表确定如何达到服务器
@@ -905,5 +905,15 @@ Interceptor接口供插件实现，@Intercepts注解在插件实现上，表示�
 2. 如何实现拦截
 创建目标实例，比如A a = new A();<br>
 Interceptor interceptor = new LogInterceptor();//如果拦截a中的save方法<br>
-将A b = (A)interceptor.plugin(a);这里b就是a的代理实例，在调用a中的save方法时，实际将调用interceptor的intercept方法，在该方法中一定要调用Invocation的proceed方法并将返回值返回。
+将A b = (A)interceptor.plugin(a);这里b就是a的代理实例，在调用a中的save方法时，实际将调用interceptor的intercept方法，在该方法中一定要调用Invocation的proceed方法并将返回值返回。<br>
+
+**9.MyBatis运行原理**
+![MyBatis流程图](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/resource/MyBatis%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+在 MyBatis 运行开始时需要先通过 Resources加载全局配置文件.<br>
+下面需要实例化 SqlSessionFactoryBuilder 构建器.<br>
+帮助 SqlSessionFactory 接口实现类 DefaultSqlSessionFactory. <br>
+在实例化 DefaultSqlSessionFactory 之前需要先创建 XmlConfigBuilder解析全局配置文件流,并把解析结果存放在 Configuration 中.<br>
+之后把Configuratin 传递给 DefaultSqlSessionFactory.到此 SqlSessionFactory 工厂创建成功.<br>
+由 SqlSessionFactory 工厂创建 SqlSession. 每次创建 SqlSession 时,都需要由 TransactionFactory 创建 Transaction对象,同时还需要创建 SqlSession 的执行器 Excutor,最后实例化DefaultSqlSession,传递给 SqlSession 接口. 根据项目需求使用 SqlSession 接口中的 API 完成具体的事务操作.<br>
+如果事务执行失败,需要进行 rollback 回滚事务. 如果事务执行成功提交给数据库.关闭 SqlSession<br>
 
