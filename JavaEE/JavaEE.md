@@ -908,7 +908,9 @@ Interceptor interceptor = new LogInterceptor();//如果拦截a中的save方法<b
 将A b = (A)interceptor.plugin(a);这里b就是a的代理实例，在调用a中的save方法时，实际将调用interceptor的intercept方法，在该方法中一定要调用Invocation的proceed方法并将返回值返回。<br>
 
 **9.MyBatis运行原理**
+
 ![MyBatis流程图](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/resource/MyBatis%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+
 在 MyBatis 运行开始时需要先通过 Resources加载全局配置文件.<br>
 下面需要实例化 SqlSessionFactoryBuilder 构建器.<br>
 帮助 SqlSessionFactory 接口实现类 DefaultSqlSessionFactory. <br>
