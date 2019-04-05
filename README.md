@@ -21,7 +21,8 @@
 * [ ] [Vue.js](https://)
 
 # Hadoop
-* [ ] [Hadoop](https://)
+* [x] [Hadoop](https://github.com/Zhang-Yixuan/Hadoop_Learning)
+* [x] [Hadoop面试](https://)
 
 # Scala
 * [ ] [Scala](https://)
