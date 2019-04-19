@@ -4,6 +4,9 @@
 
 本项目主要涉及到Java语言、数据库、前端、Hadoop、Scala和Python几个部分。每个部分都有相对应的基础题和常见面试题，文档编辑过程中难免有漏掉和有错误的地方，如果你有看到文档中存在任何问题，请指正，谢谢！
 
+# C
+* [x] [数据结构C语言描述](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/README.resource/C.md)
+
 # Java
 * [x] [JavaSE篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JavaSE/JavaSE.md)
 * [x] [JavaEE篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JavaEE/JavaEE.md)
