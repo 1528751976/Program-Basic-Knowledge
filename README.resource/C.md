@@ -13,10 +13,10 @@
 
     单链表、循环单链表、双向链表、循环双向链表、静态链表
     * 各个链表的判空方式：
-        * 单链表：(带头节点的单链表)head->next == null;(不带头节点的单链表)head == null;
-        * 循环单链表：(带头节点的单链表)head->next == head;(不带头节点的单链表)head == null;
-        * 双向链表：(带头节点的单链表)head->next == null;(不带头节点的单链表)head == null;
-        * 循环双向链表：(带头节点的单链表)head->next == head;或head->prior == head;或head->next==head&&head->prior==head;或head->next==head||head->prior==head(不带头节点的单链表)head == null;
+        * 单链表：(带头节点的)head->next == null;(不带头节点的)head == null;
+        * 循环单链表：(带头节点的)head->next == head;(不带头节点的)head == null;
+        * 双向链表：(带头节点的)head->next == null;(不带头节点的)head == null;
+        * 循环双向链表：(带头节点的)head->next == head;或head->prior == head;或head->next==head&&head->prior==head;或head->next==head||head->prior==head(不带头节点的)head == null;
 
 ### 顺序表的操作：(其本质就是一个数组)
 
@@ -103,6 +103,7 @@
 ```
 
 ### 顺序表的方面的练习题：
+
 1. 将两个表A和B，合并到A中。思路：扩大线性表A的元素长度，将B中不存在A表中的元素加入到A中，需要将B中的元素逐个取出，然后遍历A表，查看是否有相同的元素。
 
 ```c
@@ -150,9 +151,29 @@ void MergeList(Sqlist LA ,Sqlist LB , Sqlist &LC){
     }
 
 }
+
 ```
 
-### 链表的操作：
+3. 顺序表用数组A[]表示，表中元素存储在数组下标0-m+n-1的范围内，前m个元素递增有序，后n个元素也递增有序，设计一个算法，使得整个顺序表有序。
+
+```c
+    /*算法思想：A[]看成是两个顺序表L和R，L表中有m个元素，下标范围是0-m-1，而R表中有n个元素，下标范围为m-m+n-1。可以将R表中的元素取出，插入到L中合适的位置。
+    插入过程：从R中取出第一个元素A[m]存入到temp中，然后依次与L表中的元素从后往前比较，即逐个与A[m-1],A[m-2]...A[0]进行比较，当temp<A[j]时，将A[j]后移一位，否则将temp存入到A[j+1]，重复上述过程继续插入A[m+1]，A[m+2]...A[m+n]，最终A[]中元素整体有序。
+    */
+    void insertElem(int A[] , int m , int n){
+        int i , j , temp;
+        for(i = m ; i<m+n-1 ; m++){
+            temp = A[i];
+            for(j = m-1 ; j>=0 && temp<A[j] ; j--){
+                A[j+1] = A[j] ; //元素后移，腾出位置插入temp
+            }
+            A[j+1] = temp; //插入temp,由于for循环后j多前移了一位，因此在j+1处插入
+        }
+    }
+```
+
+4. 已知递增有序的单链表A、B（A，B中元素个数分别是m、n，且A、B都带有头结点）分别存储了一个集合，请设计算法，求出两个集合A和B的差集A-B
+### 单链表的操作：
 
 ```c
     //单链表的定义
@@ -170,7 +191,7 @@ void MergeList(Sqlist LA ,Sqlist LB , Sqlist &LC){
 
     //单链表的插入算法
     void LinkListInsert(LinkList &L , int i , int e){ //在带头节点的第i个位置插入e
-        p = L;
+        LNode *p = L;
         int j = 0;
         if(!p || j>i ){
             return Erro;
@@ -187,7 +208,8 @@ void MergeList(Sqlist LA ,Sqlist LB , Sqlist &LC){
 
     //单链表删除元素
     void LinkListDelete(LinkList &L , int i,int &e){ //删除第i个位置上的元素，并将元素值赋给e
-        p = L;
+        LNode *p = L;
+        LNode *q;
         int j = 0;
         if(!p || j>i){
             return Erro;
@@ -213,4 +235,119 @@ void MergeList(Sqlist LA ,Sqlist LB , Sqlist &LC){
             L->next = p;
         }
     } //CreateLinkList
+
+    //将两个有序链表LA,LB合并成一个有序链表LC，使用尾插法归并成非递减
+    void MergeLinkList(LinkList &LA,LinkList &LB,LinkList &Lc){
+        //已知单链表LA和LB的元素按值非递减排列，归并LA和LB得到新的单链表LC，LC的元素也按照非递减排列
+        LNode *pa = LA->next;
+        LNode *pb = LB->next;
+        LC = LNode *pc = LA;  //用LA的头结点充当LC的头结点
+        pc->next = NULL;
+        while(pa && pb){ //LA和LB不为空的时候
+            if(pa->data <= pb->data){
+                pc->next = pa;  //将pa当前指向的结点添加到LC
+                pc = pa;        //将pc指针移动到新添加的结点
+                pa = pa->next;  //将指针pa向后挪一位
+            }else{
+                pc->next = pb;
+                pc = pb;
+                pb = pb->next;
+            }
+        }
+        pc->next = pa ? pa : pb; //三目运算来将剩余的元素添加
+        free(LB);       //释放LB的头结点
+    }//MergeLinkList
+
+    //将两个有序链表LA,LB合并成一个有序链表LC，使用头插法归并成递减
+    void MergeLinkList(LinkList &LA,LinkList &LB,LinkList &Lc){
+        //已知单链表LA和LB的元素按值非递减排列，归并LA和LB得到新的单链表LC，LC的元素按照递减排列
+        LNode *pa = LA->next;
+        LNode *pb = LB->next;
+        LNode *pc;
+        LC = LA;
+        LC->next = NULL;
+        while(pa && pb){ //LA和LB不为空的时候
+            if(pa->data <= pb->data){
+                pc = pa;
+                pa = pa->next;
+                pc->next = LC->next;  
+                LC->next = pc;
+            }else{
+                pc = pb;
+                pb = pb->next;
+                pc->next = LC->next;  
+                LC->next = pc;
+            }
+        }
+        //下面的两个循环是和求递增归并序列不同的地方，必须将剩余元素逐个插入到C的头部才能得到最终的递减序列
+        while(pa){
+            pc = pa;
+            pa = pa->next;
+            pc->next = LC->next;  
+            LC->next = pc;
+        }
+        while(pb){
+            pc = pb;
+            pb = pb->next;
+            pc->next = LC->next;  
+            LC->next = pc;
+        }
+        free(LB);       //释放LB的头结点
+    }//MergeLinkList
+
+    //查找链表C中是否存在一个值为x的结点，若存在，则删除该节点并返回1，否则返回0
+    int findx(LinkList &C,int x){
+        LNode *p , *q;
+        p = C;
+        //开始查找
+        while(p->next != NULL){
+            if(p->next->data == x){
+                break;  //跳出整个while循环
+            }
+            p = p->next;
+        }
+        if(p->next == NULL){
+            return 0;
+        }
+        else{
+            q = p->next;
+            p->next = p->next->next;
+            free(q);
+            return 1;
+        }
+    }
+```
+
+### 双链表的操作：
+
+```c
+    //采用尾插法建立双链表La，将数组a中的元素插入到双链表中
+    void CreateDLinkList(LinkList &La ,int a[] ,int n){
+        DLNode *p , *q;
+        int i ;
+        La = (LNode*)malloc(sizeof(DLNode));
+        La->prior = NULL;
+        La->next = NULL;
+        p = La;
+        while(i = 0 ; i<n ; i++){
+            q = (DLNode)malloc(sizeof(DLNode));
+            q->data = a[i];
+            p->next =q;
+            q->prior = p;
+            p = q;
+        }
+        p->next = NULL;
+    }
+
+    //在双链表中查找第一个值为x的结点，从第一个结点开始，边扫描，边比较，若找到这样的结点，返回结点指针，否则返回NULL
+    DLNode* findNode(LinkList C,int x){
+        DLNode *p = C->next;
+        while(p){
+            if(p->data == x){
+                break;
+            }
+            p = p->next;
+        }
+        return p;
+    }
 ```
