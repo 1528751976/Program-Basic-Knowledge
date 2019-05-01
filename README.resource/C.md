@@ -104,7 +104,23 @@
 
 ### 顺序表的方面的练习题：
 
-1. 将两个表A和B，合并到A中。思路：扩大线性表A的元素长度，将B中不存在A表中的元素加入到A中，需要将B中的元素逐个取出，然后遍历A表，查看是否有相同的元素。
+1. 将一个顺序表中的元素进行逆置。
+
+```c
+
+void reserve(Sqlist &L){
+    int i , j;
+    int temp;
+    for(i = 0 , j = L.length-1; i<j ; i++ , j--){
+        temp = L.data[i];
+        L.data[i] = L.data[j];
+        L.data[j] = temp;
+    }
+}
+
+```
+
+2. 将两个表A和B，合并到A中。思路：扩大线性表A的元素长度，将B中不存在A表中的元素加入到A中，需要将B中的元素逐个取出，然后遍历A表，查看是否有相同的元素。
 
 ```c
 
@@ -119,7 +135,7 @@ void Union(Sqlist &LA , Sqlist LB){
 
 ```
 
-2. 两个线性表LA和LB各自均递增排列，先将LA和LB合并成LC，依旧要LC中的元素递增。
+3. 两个线性表LA和LB各自均递增排列，先将LA和LB合并成LC，依旧要LC中的元素递增。
 
 ```c
 
@@ -154,7 +170,7 @@ void MergeList(Sqlist LA ,Sqlist LB , Sqlist &LC){
 
 ```
 
-3. 顺序表用数组A[]表示，表中元素存储在数组下标0-m+n-1的范围内，前m个元素递增有序，后n个元素也递增有序，设计一个算法，使得整个顺序表有序。
+4. 顺序表用数组A[]表示，表中元素存储在数组下标0-m+n-1的范围内，前m个元素递增有序，后n个元素也递增有序，设计一个算法，使得整个顺序表有序。
 
 ```c
     /*算法思想：A[]看成是两个顺序表L和R，L表中有m个元素，下标范围是0-m-1，而R表中有n个元素，下标范围为m-m+n-1。可以将R表中的元素取出，插入到L中合适的位置。
@@ -172,7 +188,78 @@ void MergeList(Sqlist LA ,Sqlist LB , Sqlist &LC){
     }
 ```
 
-4. 已知递增有序的单链表A、B（A，B中元素个数分别是m、n，且A、B都带有头结点）分别存储了一个集合，请设计算法，求出两个集合A和B的差集A-B
+5. 已知递增有序的单链表A、B（A，B中元素个数分别是m、n，且A、B都带有头结点）分别存储了一个集合，请设计算法，求出两个集合A和B的差集A-B(由仅在A中出现，而不在B中出现的元素)
+
+```c
+    /*算法思想：只需要从A中删除A与B中共有的元素，定一两个指针，分别指向A和B的起始节点，然后比较p、q所指向节点元素的大小，如果p指向的元素大小小于q，则让p向后移动一位，否则，让q向后移动一位。当p、q指针所指向的数据相等时，删除A中此时对的节点。当两个p、q中任意一个为NULL时，算法结束。
+    */
+    void difference(LinkList &A ,LinkList &B){
+        LNode *p = A->next;
+        LNode *q = B->next;
+        LNode *pre = A ; //per为A链表中p的前驱节点
+        LNode *r;
+        while(p!=NULL&&q!=NULL){
+            if(p->data < q->data){
+                pre = p;
+                p = p->next;
+            }else if(p->data > q->data){
+                q = q->next;
+            }else{
+                pre ->next = p ->next;
+                r = p;
+                p = p ->next;
+                free(r);
+            }
+        }
+    }
+```
+
+6. 已知递增有序的单链表A、B（A，B中元素个数分别是m、n，且A、B都带有头结点）分别存储了一个集合，请设计算法，求出两个集合A和B的差集A-B(由仅在A中出现，而不在B中出现的元素)
+
+```c
+    /*算法思想：只需要从A中删除A与B中共有的元素，定一两个指针，分别指向A和B的起始节点，然后比较p、q所指向节点元素的大小，如果p指向的元素大小小于q，则让p向后移动一位，否则，让q向后移动一位。当p、q指针所指向的数据相等时，删除A中此时对的节点。当两个p、q中任意一个为NULL时，算法结束。
+    */
+    void difference(LinkList &A ,LinkList &B){
+        LNode *p = A->next;
+        LNode *q = B->next;
+        LNode *pre = A ; //per为A链表中p的前驱节点
+        LNode *r;
+        while(p!=NULL&&q!=NULL){
+            if(p->data < q->data){
+                pre = p;
+                p = p->next;
+            }else if(p->data > q->data){
+                q = q->next;
+            }else{
+                pre ->next = p ->next;
+                r = p;
+                p = p ->next;
+                free(r);
+            }
+        }
+    }
+```
+
+7. 设计一个算法，在给定的顺序表中删除i-j范围的元素。
+
+```c
+
+void DeleteElement(Sqlist &L , int i , int j){
+    int k , delta;
+    delta = j-i+1;
+    for(k = j+1 ; k<L.length ; k++){
+        L.data[k-delta] = L.data[k];
+    }
+    L.length -= delta;
+}
+
+```
+
+### 其他重要知识点
+1. 为什么在链表设置尾指针要比设置头指针更好？
+答： 因为，设置尾指针方便找到尾结点和头结点，且时间复杂度为O(1),而设置头指针，不利于尾结点的查找，头结点查找的时间复杂度为O(1),而尾结点的查找时间复杂度为O(n)。
+
+
 ### 单链表的操作：
 
 ```c
