@@ -1,27 +1,27 @@
-线性表
-=====
+# 线性表
 
 ### 顺序表与链表的区别：
-    1. 基于空间的比较：
-        * 存储分配方式：顺序表需要分配连续的地址空间，空间一旦确定，就不能再改变，一次性分配；链表是散落存储，可进行动态的分配
-        * 存储密度：顺序表存储密度大于链表，因为链表可以用来存储前驱和后继指针
-    2. 基于时间的比较：
-        * 存取方式：顺序表可以实现随机存取；链表只能够顺序存取
-        * 插入和删除：顺序表插入和删除平均需要移动一半元素；链表不需要移动元素，只需要移动指针
+
+1. 基于空间的比较：
+   - 存储分配方式：顺序表需要分配连续的地址空间，空间一旦确定，就不能再改变，一次性分配；链表是散落存储，可进行动态的分配
+   - 存储密度：顺序表存储密度大于链表，因为链表可以用来存储前驱和后继指针
+2. 基于时间的比较：
+   - 存取方式：顺序表可以实现随机存取；链表只能够顺序存取
+   - 插入和删除：顺序表插入和删除平均需要移动一半元素；链表不需要移动元素，只需要移动指针
 
 ### 链表的分类：
 
-    单链表、循环单链表、双向链表、循环双向链表、静态链表
-    * 各个链表的判空方式：
-        * 单链表：(带头节点的)head->next == null;(不带头节点的)head == null;
-        * 循环单链表：(带头节点的)head->next == head;(不带头节点的)head == null;
-        * 双向链表：(带头节点的)head->next == null;(不带头节点的)head == null;
-        * 循环双向链表：(带头节点的)head->next == head;或head->prior == head;或head->next==head&&head->prior==head;或head->next==head||head->prior==head(不带头节点的)head == null;
+单链表、循环单链表、双向链表、循环双向链表、静态链表
+**各个链表的判空方式：**
+
+- 单链表：(带头节点的)head->next == null;(不带头节点的)head == null;
+- 循环单链表：(带头节点的)head->next == head;(不带头节点的)head == null;
+- 双向链表：(带头节点的)head->next == null;(不带头节点的)head == null;
+- 循环双向链表：(带头节点的)head->next == head;或head->prior == head;或head->next==head&&head->prior==head;或head->next==head||head->prior==head(不带头节点的)head == null;
 
 ### 顺序表的操作：(其本质就是一个数组)
 
 ```c
-
     //顺序表结构体的定义
     #define MaxSize 100 //设置地址空间的大小
     typedef struct{ //定义结构体，相当于Java中的class标记符，{}里面有成员变量
@@ -98,8 +98,6 @@
         ++(L.length);
         return 1;       //成功返回1
     }
-
-
 ```
 
 ### 顺序表的方面的练习题：
@@ -107,7 +105,6 @@
 1. 将一个顺序表中的元素进行逆置。
 
 ```c
-
 void reserve(Sqlist &L){
     int i , j;
     int temp;
@@ -117,13 +114,11 @@ void reserve(Sqlist &L){
         L.data[j] = temp;
     }
 }
-
 ```
 
 2. 将两个表A和B，合并到A中。思路：扩大线性表A的元素长度，将B中不存在A表中的元素加入到A中，需要将B中的元素逐个取出，然后遍历A表，查看是否有相同的元素。
 
 ```c
-
 void Union(Sqlist &LA , Sqlist LB){
     for(int i = 0 ; i < LB.length ; i++){
         GetElem(LB,i,e);  //取LB中的第i个元素
@@ -132,13 +127,11 @@ void Union(Sqlist &LA , Sqlist LB){
         }
     }
 }
-
 ```
 
 3. 两个线性表LA和LB各自均递增排列，先将LA和LB合并成LC，依旧要LC中的元素递增。
 
 ```c
-
 void MergeList(Sqlist LA ,Sqlist LB , Sqlist &LC){
     InitList(LC);  //初始化链表C
     int i = 0 , j = 0 , k = 0 ;  //定义两个指标i和j，i用来遍历LA，j用来遍历LB，k指示LC的长度
@@ -167,10 +160,9 @@ void MergeList(Sqlist LA ,Sqlist LB , Sqlist &LC){
     }
 
 }
-
 ```
 
-4. 顺序表用数组A[]表示，表中元素存储在数组下标0-m+n-1的范围内，前m个元素递增有序，后n个元素也递增有序，设计一个算法，使得整个顺序表有序。
+4. 顺序表用数组A\[]表示，表中元素存储在数组下标0-m+n-1的范围内，前m个元素递增有序，后n个元素也递增有序，设计一个算法，使得整个顺序表有序。
 
 ```c
     /*算法思想：A[]看成是两个顺序表L和R，L表中有m个元素，下标范围是0-m-1，而R表中有n个元素，下标范围为m-m+n-1。可以将R表中的元素取出，插入到L中合适的位置。
@@ -243,7 +235,6 @@ void MergeList(Sqlist LA ,Sqlist LB , Sqlist &LC){
 7. 设计一个算法，在给定的顺序表中删除i-j范围的元素。
 
 ```c
-
 void DeleteElement(Sqlist &L , int i , int j){
     int k , delta;
     delta = j-i+1;
@@ -252,13 +243,11 @@ void DeleteElement(Sqlist &L , int i , int j){
     }
     L.length -= delta;
 }
-
 ```
 
 8. 有一个顺序表L，去元素为整型数据，设计一个算法，将L中所有小于表头元素的整数放在前半部分，大于表头的部分放在后半部分
 
 ```c
-
 void move(Sqlist &L){
     int temp ;
     int i = 0 , j = L.length-1;
@@ -283,13 +272,12 @@ void move(Sqlist &L){
     }
     L.data[i] = temp;  //表首元素放在最终位置
 }
-
 ```
 
 ### 其他重要知识点
-1. 为什么在链表设置尾指针要比设置头指针更好？
-答： 因为，设置尾指针方便找到尾结点和头结点，且时间复杂度为O(1),而设置头指针，不利于尾结点的查找，头结点查找的时间复杂度为O(1),而尾结点的查找时间复杂度为O(n)。
 
+1. 为什么在链表设置尾指针要比设置头指针更好？
+   答： 因为，设置尾指针方便找到尾结点和头结点，且时间复杂度为O(1),而设置头指针，不利于尾结点的查找，头结点查找的时间复杂度为O(1),而尾结点的查找时间复杂度为O(n)。
 
 ### 单链表的操作：
 
@@ -434,7 +422,6 @@ void move(Sqlist &L){
             return 1;
         }
     }
-
 ```
 
 ### 双链表的操作：
@@ -471,12 +458,11 @@ void move(Sqlist &L){
     }
 ```
 
-
 ### 链表的习题：
 
 1. 有一个递增非空单链表，设计一个算法删除值域重复的结点。例如：{1,1,2,3,3,3,4,4,7,7,7,9,9,9}经过删除后变成{1,2,3,4,7,9}
-```c
 
+```c
 //算法思想：依次将原序列中每个连续相等子序列的第一个元素移动到表的前端，将剩余的元素删除即可。令p指向起始节点。q从p的后继结点开始扫描，q每来到一个新结点的时候进行检测：当q->data等于p->data时，什么也不做，q继续往后走；当两者不相等时，p往后走一个位置，然后用q->data取代p->data。之后，q继续往后扫描，重复以上过程。当q为空时，释放从p之后的所有结点空间。
 void dels(LinkList &L){
     LNode *p = L->next;
@@ -499,13 +485,11 @@ void dels(LinkList &L){
         free(r);
     }
 }
-
 ```
 
 2. 将一个带头结点的单链表逆置，且不能建立新表，只能在原来的基础上改动
 
 ```c
-
 //算法思想：将L->next设置为空，然后将头结点后的元素使用头插法插入L中，这样L中的元素正好逆序。
 
 void reversel(LinkList &L){
@@ -518,13 +502,11 @@ void reversel(LinkList &L){
         p = q;
     }
 }
-
-
 ```
 
 3. 设计一个算法，将单链表中最小的元素删除掉
-```c
 
+```c
 void delmin(LinkList &L){
     LNode *pre = L ,*p = pre->next,*minp = p , *minpre = pre;
     while(p!= NULL){
@@ -538,10 +520,10 @@ void delmin(LinkList &L){
     minpre->next = minp->next;
     free(minp);
 }
-
 ```
 
 4. 设计一个算法，将单链表A拆分成两个链表分别是A和B，A中存放原表数据域为奇数的结点，B中存放原表中数据域为偶数的结点，并保持原来链表的相对顺序。
+
 ```c
 //算法思想：用指针p从头至尾扫描A链表，当发现结点data域为偶数结点则取下，插入链表B。
 void split(LinkList &L){
@@ -563,6 +545,4 @@ void split(LinkList &L){
         }
     }
 }
-
-
 ```
