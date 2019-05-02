@@ -255,6 +255,37 @@ void DeleteElement(Sqlist &L , int i , int j){
 
 ```
 
+8. 有一个顺序表L，去元素为整型数据，设计一个算法，将L中所有小于表头元素的整数放在前半部分，大于表头的部分放在后半部分
+
+```c
+
+void move(Sqlist &L){
+    int temp ;
+    int i = 0 , j = L.length-1;
+    temp = L.data[i];
+    while(i < j){
+        while(i < j && L.data[j]>temp){  
+        //j从右往左扫描，当来到第一个比temp小的元素停止，并且每走一步都要判断i是否小于j
+            j--;
+        }
+        //检测是否i小于j
+        if(i < j){
+            L.data[i] = L.data[j]; //移动元素
+            i++;   //i向右移动一位
+        }
+        while(i < j && L.data[i] < temp){
+            i++;
+        }
+        if(i < j){
+            L.data[j] = L.data[i];
+            j--;
+        }
+    }
+    L.data[i] = temp;  //表首元素放在最终位置
+}
+
+```
+
 ### 其他重要知识点
 1. 为什么在链表设置尾指针要比设置头指针更好？
 答： 因为，设置尾指针方便找到尾结点和头结点，且时间复杂度为O(1),而设置头指针，不利于尾结点的查找，头结点查找的时间复杂度为O(1),而尾结点的查找时间复杂度为O(n)。
@@ -403,6 +434,7 @@ void DeleteElement(Sqlist &L , int i , int j){
             return 1;
         }
     }
+
 ```
 
 ### 双链表的操作：
@@ -437,4 +469,100 @@ void DeleteElement(Sqlist &L , int i , int j){
         }
         return p;
     }
+```
+
+
+### 链表的习题：
+
+1. 有一个递增非空单链表，设计一个算法删除值域重复的结点。例如：{1,1,2,3,3,3,4,4,7,7,7,9,9,9}经过删除后变成{1,2,3,4,7,9}
+```c
+
+//算法思想：依次将原序列中每个连续相等子序列的第一个元素移动到表的前端，将剩余的元素删除即可。令p指向起始节点。q从p的后继结点开始扫描，q每来到一个新结点的时候进行检测：当q->data等于p->data时，什么也不做，q继续往后走；当两者不相等时，p往后走一个位置，然后用q->data取代p->data。之后，q继续往后扫描，重复以上过程。当q为空时，释放从p之后的所有结点空间。
+void dels(LinkList &L){
+    LNode *p = L->next;
+    LNode *q = L->next->next;
+    LNode *r;
+    while(q!=NULL){
+        while(q!=NULL && q->data==p->data){
+            q = q->next;
+        }
+        if(q!=NULL){
+            p = p->next;
+            p->data = q->data;
+        }
+    }
+    q = p->next;
+    p->next = NULL;
+    while(q!=NULL){
+        r = q;
+        q = q->next;
+        free(r);
+    }
+}
+
+```
+
+2. 将一个带头结点的单链表逆置，且不能建立新表，只能在原来的基础上改动
+
+```c
+
+//算法思想：将L->next设置为空，然后将头结点后的元素使用头插法插入L中，这样L中的元素正好逆序。
+
+void reversel(LinkList &L){
+    LNode *p = L->next , *q;
+    L-next = NULL;
+    while(p != NULL){
+        q = p ->next;
+        p->next = L->next;
+        L->next = p ;
+        p = q;
+    }
+}
+
+
+```
+
+3. 设计一个算法，将单链表中最小的元素删除掉
+```c
+
+void delmin(LinkList &L){
+    LNode *pre = L ,*p = pre->next,*minp = p , *minpre = pre;
+    while(p!= NULL){
+        if(p->data<minp->data){
+            minp = p ;
+            minpre = pre;
+        }
+        pre = p;
+        p = p ->next;
+    }
+    minpre->next = minp->next;
+    free(minp);
+}
+
+```
+
+4. 设计一个算法，将单链表A拆分成两个链表分别是A和B，A中存放原表数据域为奇数的结点，B中存放原表中数据域为偶数的结点，并保持原来链表的相对顺序。
+```c
+//算法思想：用指针p从头至尾扫描A链表，当发现结点data域为偶数结点则取下，插入链表B。
+void split(LinkList &L){
+    LNode *p,*q,*r;
+    B = (LNode*)malloc(sizeof(LNode));
+    B->next = NULL;
+
+    r = B;
+    p = A;
+    while(p->next !=NULL){
+        if((p->next->data & 1) == 0){
+            q = p->next;
+            p->next = q->next;
+            q->next = NULL;
+            r->next = q;
+            r = q;
+        }else{
+            p = p->next;
+        }
+    }
+}
+
+
 ```
