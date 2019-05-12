@@ -41,4 +41,11 @@ while a>b:  # while循环语句，条件不成立时，结束循环。
 else：  # 当while正常结束后，执行else
 	pass
 ```
+#### 逻辑运算符
+	
+运算符 | 逻辑表达式 | 描述
+---- | ---- | ----
+and | a and b | “与”，如果a和b中至少有一个为False，则为False；a和b全为True，则为True。
+or | a or b |“或”，如果a和b中有一个为True，则为True；a和b全为False，则为False。
+not | not a | “非”，如果a为True，则False；如果a为False，则False。
 
