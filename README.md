@@ -39,7 +39,7 @@
 * [ ] [框架篇](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/README.resource/front-frame.md)
 
 # Hadoop
-##### 本版块由ZYX、ZJ提供
+##### 本版块由ZYX、ZJ、LSL提供
 * [x] [Linux](https://github.com/Zhang-Yixuan/Hadoop_Learning/blob/master/Linux.md)
 * [x] [Hadoop](https://github.com/Zhang-Yixuan/Hadoop_Learning)
 * [x] [Hadoop面试](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/JavaSE/hadoop.md)
