@@ -14,7 +14,7 @@
 
 # C语言
 ##### 本版块由ZYX提供
-* [ ] [c指针和结构体]（）
+* [ ] [c指针和结构体]（https://）
 * [x] [数据结构C语言描述](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/README.resource/C.md)
 
 # Java
