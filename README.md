@@ -17,7 +17,7 @@
 * [x] [OfferCode](https://github.com/Zhang-Yixuan/OfferCode)
 
 # 数据库
-* [ ] [MySQL篇与Redis](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/DB/DB.md)
+* [x] [MySQL篇与Redis](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/DB/DB.md)
 
 # 前端
 * [ ] [Html+CSS+JS](https://)
