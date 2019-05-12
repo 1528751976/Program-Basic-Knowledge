@@ -34,5 +34,6 @@
 
 # Python
 * [x] [Python](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/README.resource/python.md)
+* [x] [Python爬虫](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/python%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB%E7%9F%A5%E8%AF%86%E5%BF%85%E5%A4%87.md)
 
 
