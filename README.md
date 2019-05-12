@@ -33,6 +33,6 @@
 * [ ] [Spark](https://)
 
 # Python
-* [x] [Python](https://)
+* [x] [Python](https://github.com/Zhang-Yixuan/Program-Basic-Knowledge/blob/master/README.resource/python.md)
 
 
