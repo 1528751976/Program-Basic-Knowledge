@@ -12,9 +12,7 @@ LeetCode（算法题，建议一个标签一个标签刷，从简到难，每天
 
 **数据结构视频：**（这个视频，可能是因为太优秀了或是作者跟百度做了py交易，经常被封，所以只能用百度群组分享）
 
-[数据结构](https://pan.baidu.com/mbox/homepage?short=eThrLYE)
-
-**（里面有个名为 天 的文件夹就是，其他的文件这个群组也有）**
+[数据结构](https://pan.baidu.com/mbox/homepage?short=eThrLYE)**（里面有个名为 天 的文件夹就是，其他的文件这个群组也有）**
 
 三、 **搜索网站**：
 
