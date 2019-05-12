@@ -84,3 +84,11 @@ list.sort()	 | 对列表中的元素进行排序。
 list.reverse() |倒排列表中的元素。
 list.copy()	| 返回列表的浅复制。
 
+
+
+## python库selenium基础应用
+### 初始化
+-导入selenium库
+```python
+import selenium
+```
