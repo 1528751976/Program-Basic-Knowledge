@@ -57,6 +57,8 @@
 * [ ] [Scala](https://)
 * [ ] [Spark](https://)
 
-
+# LaTeX
+#### 本板块由LSL提供
+* [ ] [LaTeX](https://)
 
 
