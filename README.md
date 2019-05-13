@@ -45,7 +45,7 @@
 
 
 # Linux
-##### 本版块由ZYX、ZJ、LSL提供
+##### 本版块由ZYX、ZJ、Songling提供
 * [x] [Linux](https://github.com/Zhang-Yixuan/Hadoop_Learning/blob/master/Linux.md)
 
 # Hadoop
@@ -58,7 +58,7 @@
 * [ ] [Spark](https://)
 
 # LaTeX
-#### 本板块由LSL提供
+#### 本板块由Songling提供
 * [ ] [LaTeX](https://)
 
 
