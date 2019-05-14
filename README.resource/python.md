@@ -119,3 +119,33 @@ ChromeDriver v2.38 (2018-04-17) | Chrome v65-67
 ChromeDriver v2.37 (2018-03-16) | Chrome v64-66
 ChromeDriver v2.36 (2018-03-02) | Chrome v63-65
 ChromeDriver v2.35 (2018-01-10) | Chrome v62-64
+
+ > 下载的浏览器驱动请放在python安装目录下。如果放在其他目录下，请自行配环境。
+
+### selenium的定位方式
+
+- selenium提供了8钟定位方式
+    - id
+    - name
+    - class name
+    - tag name
+    - link text
+    - partial link text
+    - xpath
+    - css selector
+- 8种定位的python方法
+
+    定位一个元素 | 定位多个元素 | 含义
+    ---- | ---- | ----
+    find_element_by_id() | find_elements_by_id() | 使用元素id定位
+    find_element_by_name() | find_elements_by_name() | 使用元素名字定位
+    find_element_by_class_name() | find_elements_by_class_name() | 使用元素类名定位
+    find_element_by_tag_name() | find_elements_by_tag_name() | 使用标签定位
+    find_element_by_link_text() | find_elements_by_link_text() | 使用完整链接定位
+    find_element_by_partial_link_text() | find_elements_by_partial_link_text() | 使用部分链接定位
+    find_element_by_xpath() | find_elements_by_xpath() | 使用元素xpath路径定位
+    find_element_by_css_selector() | find_elements_by_css_selector() | 使用css选择器定位
+    
+  
+    
+    
