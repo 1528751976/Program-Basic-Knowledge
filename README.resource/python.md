@@ -167,9 +167,8 @@ ChromeDriver v2.35 (2018-01-10) | Chrome v62-64
  is_displayed() | 设置该元素是否用户可见
  size | 返回元素的尺寸
  text | 获取元素的文本
- 
- ###鼠标事件
 
+### 鼠标事件
 方法 | 说明 
 ----| ----
 ActionChains(driver) | 构造ActionChains对象
