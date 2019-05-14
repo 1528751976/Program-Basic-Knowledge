@@ -151,6 +151,21 @@ ChromeDriver v2.35 (2018-01-10) | Chrome v62-64
     pass
     
     
- 
+### 控制浏览器的一些方法
+
+ 方法 | 含义
+ ---- |---
+ set_window_size() | 设置浏览器大小
+ back() | 浏览器后退
+ forward() | 浏览器前进
+ refresh() | 刷新当前页
+ clear() | 清除文本
+ send_keys(value) | 模拟按键输入
+ click() | 单击元素
+ submit() | 用于提交表单
+ get_attribute(name) | 获取元素属性
+ is_displayed() | 设置该元素是否用户可见
+ size | 返回元素的尺寸
+ text | 获取元素的文本
     
     
