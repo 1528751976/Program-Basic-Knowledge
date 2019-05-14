@@ -88,7 +88,12 @@ list.copy()	| 返回列表的浅复制。
 
 ## python库selenium基础应用
 ### 初始化
--导入selenium库
+-导入selenium库<br>
+首先，下载selenium库<br>
+```pip install selenium```<br>
+
+之后导入selenium库
 ```python
 import selenium
 ```
+
