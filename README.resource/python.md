@@ -88,12 +88,34 @@ list.copy()	| 返回列表的浅复制。
 
 ## python库selenium基础应用
 ### 初始化
--导入selenium库<br>
+-安装selenium<br>
 首先，下载selenium库<br>
 ```pip install selenium```<br>
 
-之后导入selenium库
+之后导入selenium库，检查是否下载成功。
 ```python
 import selenium
 ```
 
+- 安装浏览器驱动<br>
+    Selenium调用浏览器必须有一个webdriver驱动文件。
+    1. Chrome驱动文件下载：[chromedrive](https://chromedriver.storage.googleapis.com/index.html?path=2.35/)
+    2. Firefox驱动文件下载：[geckodriver](https://github.com/mozilla/geckodriver/releases)
+    
+   Chrome版本与chromedriver版本对照及下载：
+   
+
+chromedirve版本|chrome版本
+----|----
+ChromeDriver v2.46 (2019-02-01) | Chrome v71-73
+ChromeDriver v2.45 (2018-12-10) | Chrome v70-72
+ChromeDriver v2.44 (2018-11-19) | Chrome v69-71
+ChromeDriver v2.43 (2018-10-16) | Chrome v69-71
+ChromeDriver v2.42 (2018-09-13) | Chrome v68-70
+ChromeDriver v2.41 (2018-07-27) | Chrome v67-69
+ChromeDriver v2.40 (2018-06-07) | Chrome v66-68
+ChromeDriver v2.39 (2018-05-30) | Chrome v66-68
+ChromeDriver v2.38 (2018-04-17) | Chrome v65-67
+ChromeDriver v2.37 (2018-03-16) | Chrome v64-66
+ChromeDriver v2.36 (2018-03-02) | Chrome v63-65
+ChromeDriver v2.35 (2018-01-10) | Chrome v62-64
