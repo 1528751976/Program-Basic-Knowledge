@@ -167,5 +167,18 @@ ChromeDriver v2.35 (2018-01-10) | Chrome v62-64
  is_displayed() | 设置该元素是否用户可见
  size | 返回元素的尺寸
  text | 获取元素的文本
+ 
+ ###鼠标事件
+
+方法 | 说明 
+----| ----
+ActionChains(driver) | 构造ActionChains对象
+click() | 单击
+double_click() | 双击
+context_click() | 右击
+move_to_element(above) | 执行鼠标悬停操作
+drag_and_drop(source，target) | 拖动
+drag_and_drop_by_offset(source，x,y) | 拖动到某个坐标后松开
+perform() | 执行所有 ActionChains 中存储的行为，可以理解成是对整个操作的提交动作
     
     
