@@ -59,6 +59,6 @@
 
 # LaTeX
 #### 本板块由Songling提供
-* [ ] [LaTeX](https://)
+* [LaTeX](https://github.com/max-studio/LaTeX-MCMThesis-V2.0)
 
 
